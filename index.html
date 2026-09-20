@@ -3,48 +3,132 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Psychedelics In Recovery — GitHub</title>
+<title>PIR® — Psychedelics In Recovery™ GitHub</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="favicon.png">
 <style>
-  :root { color-scheme: light dark; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-    max-width: 640px;
-    margin: 15vh auto 4rem;
-    padding: 0 1.5rem;
-    line-height: 1.6;
-    color: #1a1a1a;
-    background: #fdfdfb;
+  :root {
+    color-scheme: light dark;
+    --bg: #fbfaf6;
+    --fg: #1c1f1a;
+    --muted: #5a6154;
+    --accent: #3f7d4e;
+    --accent-2: #c98a3a;
+    --card: #ffffff;
+    --border: #e4e0d3;
   }
   @media (prefers-color-scheme: dark) {
-    body { color: #eaeaea; background: #14161a; }
-    a { color: #8fd0ff; }
+    :root {
+      --bg: #12140f;
+      --fg: #eef0e8;
+      --muted: #a3ac98;
+      --accent: #6fd888;
+      --accent-2: #f0b25e;
+      --card: #1a1d15;
+      --border: #2b2f23;
+    }
   }
-  h1 { font-size: 1.6rem; margin-bottom: 0.25rem; }
-  .tagline { opacity: 0.7; margin-top: 0; }
-  a.button {
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    color: var(--fg);
+    background: radial-gradient(circle at 15% -10%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 45%),
+                radial-gradient(circle at 90% 10%, color-mix(in srgb, var(--accent-2) 16%, transparent), transparent 40%),
+                var(--bg);
+    min-height: 100vh;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 4rem 1.5rem 3rem; }
+  .eyebrow {
     display: inline-block;
-    margin-top: 1.5rem;
-    padding: 0.6rem 1.2rem;
-    border-radius: 8px;
-    background: #2e7d32;
-    color: white;
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+  }
+  h1 { font-size: 2rem; margin: 0 0 0.25rem; line-height: 1.15; }
+  .tagline { color: var(--muted); margin: 0 0 2rem; font-size: 1.05rem; }
+  .actions { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 2.5rem; }
+  a.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.65rem 1.1rem;
+    border-radius: 10px;
     text-decoration: none;
     font-weight: 600;
+    font-size: 0.92rem;
+    border: 1px solid transparent;
+    transition: transform 0.15s ease, opacity 0.15s ease;
   }
-  a.button:hover { background: #276029; }
+  a.btn:hover { transform: translateY(-1px); }
+  a.btn.primary { background: var(--accent); color: #08170c; }
+  a.btn.ghost { background: var(--card); color: var(--fg); border-color: var(--border); }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .card h2 { margin: 0 0 0.5rem; font-size: 1.05rem; }
+  .card p { margin: 0; color: var(--muted); line-height: 1.55; font-size: 0.95rem; }
+  .card a { color: var(--accent); font-weight: 600; text-decoration: none; }
+  .card a:hover { text-decoration: underline; }
+  .brewing {
+    border-style: dashed;
+  }
+  footer {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+  footer a { color: var(--muted); }
 </style>
 </head>
 <body>
-  <h1>🌵 Psychedelics In Recovery™</h1>
-  <p class="tagline">Integrating Psychedelics into Recovery</p>
-  <p>
-    This is the GitHub organization's root page — mainly here so that
-    <code>psychedelicsinrecovery.github.io</code> resolves cleanly instead of a 404, and to give any
-    future project sites under this org a clean base to route from.
-  </p>
-  <p>
-    PIR's actual community and website live elsewhere:
-  </p>
-  <a class="button" href="https://www.psychedelicsinrecovery.org">Visit psychedelicsinrecovery.org →</a>
+  <div class="wrap">
+    <span class="eyebrow">GitHub Organization</span>
+    <h1>🌵 PIR® <span style="font-weight:500; font-size: 1.4rem; color: var(--muted);">— Psychedelics In Recovery™</span></h1>
+    <p class="tagline">Integrating Psychedelics into Recovery</p>
+
+    <div class="actions">
+      <a class="btn primary" href="https://www.psychedelicsinrecovery.org">🌐 Visit the main site</a>
+      <a class="btn ghost" href="https://github.com/psychedelicsinrecovery/psychedelicsinrecovery.github.io">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+        Source repo
+      </a>
+    </div>
+
+    <div class="card">
+      <h2>🚧 In the works</h2>
+      <p>
+        A LitCom engagement portal and a TechCom helpdesk ticket system are being brainstormed for
+        the community — something a little more cool and psychedelic than a plain contact form.
+        Nothing live yet; if it interests you, watch this org.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>📊 Newsletter dashboard</h2>
+      <p>
+        A behind-the-scenes look at PIR's Devine News pipeline:
+        <a href="https://drasticstatic.github.io/pir-devine-news-public/dashboard">the public dashboard →</a>
+      </p>
+    </div>
+
+    <p style="margin-top: 2rem;">
+      <a href="404.html" style="color: var(--muted); font-size: 0.85rem;">Curious what a wrong turn looks like? →</a>
+    </p>
+
+    <footer>
+      PIR® · Psychedelics In Recovery™ — this page is maintained by the org's GitHub tooling, not
+      the main WordPress site.
+    </footer>
+  </div>
 </body>
 </html>
