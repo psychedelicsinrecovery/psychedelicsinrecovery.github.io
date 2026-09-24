@@ -73,6 +73,7 @@
   }
   .site-nav-inner { max-width: 720px; margin: 0 auto; }
   .wrap { max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem 3rem; }
+  body { padding-bottom: 96px; }
   .eyebrow {
     display: inline-block;
     font-size: 0.75rem;
@@ -115,16 +116,33 @@
   .brewing {
     border-style: dashed;
   }
-  footer {
-    margin-top: 2.5rem;
-    padding-top: 1.5rem;
+  .universal-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 40;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
     border-top: 1px solid var(--border);
+    padding: 10px 1.5rem;
     color: var(--muted);
-    font-size: 0.85rem;
+    font-size: 0.78rem;
   }
-  footer a { color: var(--muted); display: inline-flex; align-items: center; gap: 0.35rem; }
-  footer .footer-links { display: flex; flex-wrap: wrap; gap: 1.25rem; margin-top: 0.9rem; }
-  footer .footer-links a { color: var(--accent); font-weight: 600; }
+  .universal-footer .footer-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 4px 18px;
+    text-align: center;
+  }
+  .universal-footer a { color: var(--muted); display: inline-flex; align-items: center; gap: 0.3rem; text-decoration: none; }
+  .universal-footer a:hover { color: var(--accent); }
+  .universal-footer .footer-brand { font-weight: 600; color: var(--fg); }
 </style>
 </head>
 <body>
@@ -167,14 +185,17 @@
       </p>
     </div>
 
-    <footer>
-      PIR® · Psychedelics In Recovery™ — this page is maintained by the org's GitHub tooling, not
-      the main WordPress site.
-      <div class="footer-links">
-        <a href="404.html"><i class="ph ph-map-trifold"></i> Curious what a wrong turn looks like? →</a>
-        <a href="https://www.psychedelicsinrecovery.org/contact/"><i class="ph ph-chat-circle-text"></i> Reach out →</a>
-      </div>
-    </footer>
   </div>
+
+  <footer class="universal-footer">
+    <div class="footer-inner">
+      <span class="footer-brand">PIR® · Psychedelics In Recovery™</span>
+      <a href="https://psychedelicsinrecovery.github.io/changelog-astro-public/"><i class="ph ph-door-open"></i> Astro Porch</a>
+      <a href="https://psychedelicsinrecovery.github.io/changelog-astro-public/changelog"><i class="ph ph-clock-counter-clockwise"></i> Changelog</a>
+      <a href="https://psychedelicsinrecovery.github.io/changelog-astro-public/library"><i class="ph ph-books"></i> Library</a>
+      <a href="404.html"><i class="ph ph-map-trifold"></i> Curious what a wrong turn looks like?</a>
+      <a href="https://www.psychedelicsinrecovery.org/contact/"><i class="ph ph-chat-circle-text"></i> Reach out</a>
+    </div>
+  </footer>
 </body>
 </html>
