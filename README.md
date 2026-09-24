@@ -59,7 +59,13 @@ Nothing's live yet on the technical side. Watch this org — the trip's just get
 
 - [🏠 Org root page →](https://psychedelicsinrecovery.github.io) — where the org's GitHub Pages
   presence lives.
-  
+
+- [🕰️ Changelog →](https://psychedelicsinrecovery.github.io/changelog-astro-public/changelog) —
+  a running, plain-language record of what's actually shipped.
+
+- [📚 Library →](https://psychedelicsinrecovery.github.io/changelog-astro-public/library) — the
+  deeper technical write-ups behind it, for anyone who wants to understand how things really work.
+
 - [📰 PIR® Devine News Dashboard →](https://drasticstatic.github.io/pir-devine-news-public/dashboard) —
   a behind-the-scenes look at the newsletter pipeline.
 
