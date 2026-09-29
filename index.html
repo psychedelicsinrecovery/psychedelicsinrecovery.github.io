@@ -7,6 +7,7 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="alternate icon" href="favicon.png">
 <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap">
 <meta property="og:title" content="PIR® — Psychedelics In Recovery™">
 <meta property="og:description" content="Integrating Psychedelics into Recovery — a safe, sacred space to integrate and discuss the role of psychedelics in your recovery journey.">
 <meta property="og:image" content="https://psychedelicsinrecovery.github.io/social-card.jpg">
@@ -44,7 +45,7 @@
     --border: #2a2550;
   }
   @media (prefers-color-scheme: dark) {
-    :root {
+    :root:not([data-theme="light"]) {
       --bg: #0a0e1a;
       --fg: #f1e9ff;
       --muted: #a89cc8;
@@ -99,7 +100,8 @@
     font-weight: 700;
     margin-bottom: 0.75rem;
   }
-  h1 { font-size: 2rem; margin: 0 0 0.25rem; line-height: 1.15; }
+  h1 { font-family: "Fraunces", Georgia, serif; font-optical-sizing: auto; font-size: 2rem; margin: 0 0 0.25rem; line-height: 1.15; }
+  .h1-favicon { width: 1.5rem; height: 1.5rem; vertical-align: -0.2rem; margin-right: 0.15rem; }
   .tagline { color: var(--muted); margin: 0 0 1.5rem; font-size: 1.05rem; }
   .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem; }
   .theme-toggle {
@@ -184,7 +186,7 @@
   <div class="site-nav">
     <div class="site-nav-inner">
       <span class="eyebrow">GitHub Organization</span>
-      <h1>🌵 PIR® <span style="font-weight:500; font-size: 1.4rem; color: var(--muted);">— Psychedelics In Recovery™</span></h1>
+      <h1><img src="favicon.svg" alt="" class="h1-favicon"> PIR® <span style="font-weight:500; font-size: 1.4rem; color: var(--muted);">— Psychedelics In Recovery™</span></h1>
       <p class="tagline">Integrating Psychedelics into Recovery</p>
 
       <div class="actions">
