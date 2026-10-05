@@ -1,0 +1,11 @@
+# macOS
+.DS_Store
+._*
+
+# secrets — never commit
+.env
+.env.*
+
+# editor / scratch
+*.log
+.vscode/
