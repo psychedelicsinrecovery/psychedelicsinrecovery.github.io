@@ -57,6 +57,13 @@ Nothing's live yet on the technical side. Watch this org — the trip's just get
 
 ## 📊 Rabbit trails
 
+- [📇 Contacts & structure →](https://github.com/psychedelicsinrecovery/.github/blob/main/CONTACTS.md) —
+  who serves where, committee mailboxes, subdomains, and how to request GitHub access for your
+  service role.
+
+- [🛡️ Privacy policy →](https://github.com/psychedelicsinrecovery/.github/blob/main/privacy-policy.md) —
+  one plain-language policy for both websites, Discord, and GitHub.
+
 - [🏠 Org root page →](https://psychedelicsinrecovery.github.io) — where the org's GitHub Pages
   presence lives.
 
