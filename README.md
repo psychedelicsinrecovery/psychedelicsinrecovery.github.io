@@ -103,3 +103,8 @@ Our members either have had prior experience with, or are interested in, integra
 Spot something that could be truer, warmer, or just better? Open an issue and help it grow. 🦋
 </sub>
 </div>
+
+## 📄 License
+- 💻 **Code:** MIT, see [`LICENSE`](https://github.com/psychedelicsinrecovery/.github/blob/main/LICENSE)
+- 📝 **Written content** (docs, changelog and library prose, READMEs): CC BY-SA 4.0, see [`LICENSE-CONTENT`](https://github.com/psychedelicsinrecovery/.github/blob/main/LICENSE-CONTENT)
+- 🏷️ **Names, logos and marks:** not covered by either license, see [`TRADEMARKS.md`](https://github.com/psychedelicsinrecovery/.github/blob/main/TRADEMARKS.md)
