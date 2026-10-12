@@ -9,7 +9,7 @@ name: Mirror org profile README
 
 on:
   schedule:
-    - cron: "0 6 * * *"   # daily, 06:00 UTC
+    - cron: "17 * * * *"  # hourly, so profile README edits show up here within the hour
   workflow_dispatch: {}     # manual "Run workflow" button
 
 permissions:
