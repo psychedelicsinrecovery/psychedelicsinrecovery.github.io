@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-arrival-site="portal">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,19 +9,34 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="alternate icon" href="/favicon.png">
 <link rel="alternate" type="application/rss+xml" title="PIR® AstroLog changelog" href="https://psychedelicsinrecovery.github.io/changelog-astro-public/rss.xml">
+<link rel="canonical" href="https://psychedelicsinrecovery.github.io/">
+<!-- Link previews (Discord, WhatsApp, iMessage, Telegram…): every URL absolute, a real JPEG. -->
+<meta property="og:site_name" content="PIR® on GitHub">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://psychedelicsinrecovery.github.io/">
 <meta property="og:title" content="PIR® — Psychedelics In Recovery™">
 <meta property="og:description" content="Integrating Psychedelics into Recovery — a safe, sacred space to integrate and discuss the role of psychedelics in your recovery journey.">
 <meta property="og:image" content="https://psychedelicsinrecovery.github.io/social-card.jpg">
-<meta property="og:url" content="https://psychedelicsinrecovery.github.io/">
-<meta property="og:type" content="website">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="629">
+<meta property="og:image:alt" content="PIR®, Psychedelics In Recovery™: the fellowship's mark over a night sky.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="PIR® — Psychedelics In Recovery™">
 <meta name="twitter:description" content="Integrating Psychedelics into Recovery — a safe, sacred space to integrate and discuss the role of psychedelics in your recovery journey.">
 <meta name="twitter:image" content="https://psychedelicsinrecovery.github.io/social-card.jpg">
+<meta name="twitter:image:alt" content="PIR®, Psychedelics In Recovery™: the fellowship's mark over a night sky.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400&family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/fill/style.css">
-<script>try{var t=localStorage.getItem('pir-theme');document.documentElement.dataset.theme=(t==='light'||t==='dark')?t:'dark'}catch(e){document.documentElement.dataset.theme='dark'}</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css">
+<!-- PIR's arrival kit, shared with the AstroLog and served from /arrival/ on this site: the first-visit
+     "Choose how you arrive", light / motion / contrast / cursor effects (applied before first paint,
+     so it loads here in <head>), the welcome guide, "/" search and the avatars. -->
+<link rel="stylesheet" href="/arrival/arrival.css">
+<link rel="stylesheet" href="/arrival/org.css">
+<script src="/arrival/org.js"></script>
+<script src="/arrival/arrival.js"></script>
 <!-- Shared PIR® design system (served by alex-desk-public) + the AstroLog layer (star chart, dock). -->
 <link rel="stylesheet" href="/alex-desk-public/assets/alex.css">
 <link rel="stylesheet" href="/changelog-astro-public/astrolog.css">
@@ -66,8 +81,8 @@
     <a class="opt" href="https://psychedelicsinrecovery.github.io/alex-desk-public/"><i class="ph-fill ph-planet" aria-hidden="true"></i>A.L.E.X.</a>
     <a class="opt" href="https://github.com/psychedelicsinrecovery"><i class="ph-fill ph-github-logo" aria-hidden="true"></i>Repos</a>
   </nav>
-  <button class="tool" data-palette aria-label="Jump anywhere (press slash)"><i class="ph-fill ph-magnifying-glass" aria-hidden="true"></i><span class="lbl">Jump</span><kbd>/</kbd></button>
-  <button class="tool" data-theme-toggle aria-label="Toggle light and dark theme"><i class="ph-fill ph-moon-stars moon" aria-hidden="true"></i><i class="ph-fill ph-sun sun" aria-hidden="true"></i></button>
+  <!-- Search, the lights + motion, and the light & motion drawer (arrival kit). -->
+  <arrival-controls></arrival-controls>
 </div></header>
 
 <main id="main">
@@ -81,7 +96,7 @@
         <a class="btn" href="https://service.psychedelicsinrecovery.org"><i class="ph-fill ph-hand-heart" aria-hidden="true"></i>Service site</a>
         <a class="btn" href="https://discord.gg/MyprTq8w95"><i class="ph-fill ph-discord-logo" aria-hidden="true"></i>Join the Discord</a>
       </div>
-      <p class="hint">Press <kbd>/</kbd> to jump anywhere across PIR's pages.</p>
+      <p class="hint arr-hint">Press <kbd>/</kbd> to search anywhere across PIR's pages, the AstroLog included. New here? <a href="#welcome" data-arrival-open="guide">Take the welcome tour</a>.</p>
     </div>
     <nav class="orbit-map" aria-label="PIR's open work at a glance">
       <div class="halo" aria-hidden="true"></div>
@@ -105,6 +120,16 @@
       </div>
       <ol class="chart" id="latest-chart"><li class="muted" style="list-style:none">Loading the latest entries…</li></ol>
       <a class="more" href="https://psychedelicsinrecovery.github.io/changelog-astro-public/changelog">See every entry <i class="ph-fill ph-arrow-right" aria-hidden="true"></i></a>
+    </div>
+  </section>
+
+  <section id="people" aria-labelledby="people-h" style="padding-top:1rem">
+    <div class="wrap" style="max-width:860px">
+      <div class="head">
+        <h2 id="people-h">Who's doing the work</h2>
+        <p class="muted">Every AstroLog entry credits whoever did it, by first name and last initial in keeping with PIR's anonymity traditions. As more trusted servants pitch in, they'll appear here.</p>
+      </div>
+      <arrival-people></arrival-people>
     </div>
   </section>
 
@@ -151,7 +176,7 @@
     <a class="tended" href="https://psychedelicsinrecovery.github.io/catalyst-desk-public/"><span class="cat-mark" aria-hidden="true"></span>Tended by <b>C.A.T.A.L.Y.S.T.</b>, PIR®'s helper fleet</a></div>
   <div><b>AstroLog</b><a href="https://psychedelicsinrecovery.github.io/changelog-astro-public/"><i class="ph-fill ph-door-open" aria-hidden="true"></i>Porch</a><a href="https://psychedelicsinrecovery.github.io/changelog-astro-public/changelog"><i class="ph-fill ph-clock-counter-clockwise" aria-hidden="true"></i>Changelog</a><a href="https://psychedelicsinrecovery.github.io/changelog-astro-public/library"><i class="ph-fill ph-books" aria-hidden="true"></i>Library</a><a href="https://psychedelicsinrecovery.github.io/changelog-astro-public/rss.xml"><i class="ph-fill ph-rss-simple" aria-hidden="true"></i>RSS feed</a><a href="/404.html"><i class="ph-fill ph-map-trifold" aria-hidden="true"></i>What a wrong turn looks like</a></div>
   <div><b>Helpers</b><a href="https://psychedelicsinrecovery.github.io/alex-desk-public/"><i class="ph-fill ph-planet" aria-hidden="true"></i>A.L.E.X.</a><a href="https://psychedelicsinrecovery.github.io/litcom-desk-public/"><i class="ph-fill ph-scroll" aria-hidden="true"></i>LitCom desk</a><a href="https://psychedelicsinrecovery.github.io/techcom-desk-public/"><i class="ph-fill ph-desktop" aria-hidden="true"></i>TechCom desk</a><a href="https://psychedelicsinrecovery.github.io/github-desk-public/"><i class="ph-fill ph-github-logo" aria-hidden="true"></i>GitHubDesk</a><a href="https://psychedelicsinrecovery.github.io/pr-desk-public/"><i class="ph-fill ph-megaphone" aria-hidden="true"></i>PR Desk</a></div>
-  <div><b>PIR®</b><a href="https://www.psychedelicsinrecovery.org"><i class="ph-fill ph-globe" aria-hidden="true"></i>psychedelicsinrecovery.org</a><a href="https://discord.gg/MyprTq8w95"><i class="ph-fill ph-discord-logo" aria-hidden="true"></i>Discord</a><a href="https://github.com/psychedelicsinrecovery/.github/blob/main/CONTACTS.md"><i class="ph-fill ph-address-book" aria-hidden="true"></i>Contacts</a><a href="https://github.com/psychedelicsinrecovery/.github/blob/main/privacy-policy.md"><i class="ph-fill ph-shield-check" aria-hidden="true"></i>Privacy</a><a href="https://github.com/psychedelicsinrecovery/psychedelicsinrecovery.github.io"><i class="ph-fill ph-github-logo" aria-hidden="true"></i>Source repo</a><a class="sos" href="https://www.psychedelicsinrecovery.org/crisis-resources/"><i class="ph-fill ph-lifebuoy" aria-hidden="true"></i>Crisis resources</a></div>
+  <div><b>PIR®</b><a href="https://www.psychedelicsinrecovery.org"><i class="ph-fill ph-globe" aria-hidden="true"></i>psychedelicsinrecovery.org</a><a href="https://discord.gg/MyprTq8w95"><i class="ph-fill ph-discord-logo" aria-hidden="true"></i>Discord</a><a href="https://github.com/psychedelicsinrecovery/.github/blob/main/CONTACTS.md"><i class="ph-fill ph-address-book" aria-hidden="true"></i>Contacts</a><a href="https://github.com/psychedelicsinrecovery/.github/blob/main/privacy-policy.md"><i class="ph-fill ph-shield-check" aria-hidden="true"></i>Privacy</a><a href="https://github.com/psychedelicsinrecovery/psychedelicsinrecovery.github.io"><i class="ph-fill ph-github-logo" aria-hidden="true"></i>Source repo</a><a href="#welcome" data-arrival-open="guide"><i class="ph-fill ph-compass" aria-hidden="true"></i>Welcome guide</a><a class="sos" href="https://www.psychedelicsinrecovery.org/crisis-resources/"><i class="ph-fill ph-lifebuoy" aria-hidden="true"></i>Crisis resources</a></div>
 </div></footer>
 
 <nav class="dock" aria-label="Quick links"><div class="wrap">
@@ -180,17 +205,6 @@
     ol.innerHTML = '<li class="muted" style="list-style:none">The latest entries are on the <a href="https://psychedelicsinrecovery.github.io/changelog-astro-public/changelog">AstroLog</a>.</li>';
   });
 })();
-window.ALEX_PALETTE = [
-  { e: 'door-open', t: 'AstroLog porch', k: 'page', href: 'https://psychedelicsinrecovery.github.io/changelog-astro-public/' },
-  { e: 'clock-counter-clockwise', t: 'Changelog', k: 'page', href: 'https://psychedelicsinrecovery.github.io/changelog-astro-public/changelog' },
-  { e: 'books', t: 'Library', k: 'page', href: 'https://psychedelicsinrecovery.github.io/changelog-astro-public/library' },
-  { e: 'sparkle', t: 'C.A.T.A.L.Y.S.T.', k: 'helper', href: 'https://psychedelicsinrecovery.github.io/catalyst-desk-public/' },
-  { e: 'hand-heart', t: 'Service site', k: 'link', href: 'https://service.psychedelicsinrecovery.org' },
-  { e: 'palette', t: 'Brand assets', k: 'repo', href: 'https://github.com/psychedelicsinrecovery/brand-assets' },
-  { e: 'archive', t: 'Website archive', k: 'repo', href: 'https://github.com/psychedelicsinrecovery/wordpress-crawls' },
-  { e: 'shield-check', t: 'Privacy policy', k: 'doc', href: 'https://github.com/psychedelicsinrecovery/.github/blob/main/privacy-policy.md' },
-  { e: 'newspaper', t: 'De Vine News dashboard', k: 'link', href: 'https://drasticstatic.github.io/pir-devine-news-public/dashboard' }
-];
 </script>
 <script src="/starfield.js" defer></script>
 <script src="/alex-desk-public/assets/alex.js" defer></script>

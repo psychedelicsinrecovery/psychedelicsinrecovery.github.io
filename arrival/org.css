@@ -1,0 +1,199 @@
+/* PIR®'s look for the arrival kit, shared by the GitHub hub and the AstroLog. Load after
+   arrival.css and before the A.L.E.X. design system (alex.css), which still owns every page's own
+   colors and components.
+
+   The two lights are PIR's existing pair from alex.css: Night sky (dark, the default) and Daybreak
+   (light). The kit's tokens are defined here per mode, on attribute selectors so a splash card can
+   preview a mode by carrying data-theme. The A.L.E.X. tokens are repeated for the same reason: on a
+   page, alex.css's own values win (it loads later); inside a preview card, these do. Keep them in
+   step with psychedelicsinrecovery/alex-desk → site/assets/alex.css. */
+
+:root,
+[data-theme="dark"] {
+  --background: #06050e;
+  --foreground: #f1edfb;
+  --heading: #faf8ff;
+  --muted: #a7a1c6;
+  --surface: #141028;
+  --surface-muted: #1d1838;
+  --border: #342b5e;
+  --accent: #b48cff;
+  --accent-strong: #c8aaff;
+  --on-accent: #150c2e;
+  --pir-aurora: linear-gradient(100deg, #b48cff 0%, #6fe3ff 38%, #5ee6c4 58%, #f3c76b 80%, #ff8fb1 100%);
+  --arr-backdrop: rgba(4, 3, 12, 0.62);
+  --font-heading: Fraunces, "Iowan Old Style", Georgia, serif;
+  --font-body: Manrope, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --heading-settings: normal;
+}
+[data-theme="dark"] {
+  --ink: #06050e;
+  --ink2: #0c0a1d;
+  --panel: rgba(20, 16, 40, 0.62);
+  --panel-solid: #141028;
+  --line: rgba(180, 150, 255, 0.16);
+  --line-strong: rgba(180, 150, 255, 0.34);
+  --fg: #f1edfb;
+  --faint: #6f6a8f;
+  --violet: #b48cff;
+  --cyan: #6fe3ff;
+  --teal: #5ee6c4;
+  --gold: #f3c76b;
+  --rose: #ff8fb1;
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
+  --background: #f7f4fd;
+  --foreground: #1a1530;
+  --heading: #1a1530;
+  --muted: #57517a;
+  --surface: #ffffff;
+  --surface-muted: #efe9fa;
+  --border: #dcd2f2;
+  --accent: #6b3fd1;
+  --accent-strong: #5631b0;
+  --on-accent: #ffffff;
+  --pir-aurora: linear-gradient(100deg, #6b3fd1 0%, #0f7fa8 40%, #0b8a6d 60%, #9a6a12 82%, #b8325f 100%);
+  --arr-backdrop: rgba(26, 21, 48, 0.34);
+  --ink: #f7f4fd;
+  --ink2: #efe9fa;
+  --panel: rgba(255, 255, 255, 0.74);
+  --panel-solid: #ffffff;
+  --line: rgba(91, 56, 190, 0.14);
+  --line-strong: rgba(91, 56, 190, 0.3);
+  --fg: #1a1530;
+  --faint: #8a85a6;
+  --violet: #6b3fd1;
+  --cyan: #0f7fa8;
+  --teal: #0b8a6d;
+  --gold: #9a6a12;
+  --rose: #b8325f;
+  color-scheme: light;
+}
+
+/* ── PIR's shapes: soft cards, pill buttons, round swatches (the A.L.E.X. look) ────────────── */
+:root {
+  --arr-radius: 18px;
+}
+.arr-btn.arr-shape,
+.arr-chip.arr-shape,
+.arr-x.arr-shape,
+.arr-tip .arr-kbd-big.arr-shape {
+  border-radius: 999px;
+}
+.arr-swatch.arr-shape,
+.arr-dot.arr-shape {
+  border-radius: 50%;
+}
+.arr-card-ink {
+  background: var(--pir-aurora);
+  background-size: 220% 100%;
+}
+.arr-frame {
+  background: var(--border);
+}
+/* Three lights side by side in the splash; "Shooting stars" gets the room it needs. */
+@media (min-width: 761px) {
+  .arr-splash .arr-cards {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+.arr-seg {
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 0.8fr) minmax(0, 1.45fr);
+}
+.arr-seg-opt > span {
+  white-space: nowrap;
+}
+.arr-card:has(:checked) .arr-frame {
+  background: var(--pir-aurora);
+}
+
+/* ── the star: the guide's progress glyph has eight points, one per step, like the stars on
+      the AstroLog's chart; the step dots and the drawer's check are four-point stars ───────── */
+.arr-glyph {
+  clip-path: polygon(50% 1%, 58.04% 30.6%, 84.65% 15.35%, 69.4% 41.96%, 99% 50%, 69.4% 58.04%, 84.65% 84.65%, 58.04% 69.4%, 50% 99%, 41.96% 69.4%, 15.35% 84.65%, 30.6% 58.04%, 1% 50%, 30.6% 41.96%, 15.35% 15.35%, 41.96% 30.6%);
+}
+.arr-glyph-wrap {
+  filter: drop-shadow(0 0 10px color-mix(in srgb, var(--accent) 45%, transparent));
+}
+.arr-step-dot,
+.arr-opt:has(:checked)::after {
+  width: 14px;
+  height: 14px;
+  border-radius: 0;
+  clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%);
+}
+
+/* ── the star-chart rail: the AstroLog's violet → cyan → gold line, under the guide's head and
+      over its foot, and as the drawer's rule ───────────────────────────────────────────────── */
+.arr-rule {
+  height: 2px;
+  border: 0;
+  background: linear-gradient(90deg, transparent, #b48cff 18%, #6fe3ff 50%, #f3c76b 82%, transparent);
+  opacity: 0.7;
+}
+.arr-guide-head {
+  border-bottom: 0;
+  background: linear-gradient(90deg, var(--violet, #b48cff), var(--cyan, #6fe3ff) 55%, var(--gold, #f3c76b)) bottom left / 100% 2px no-repeat;
+}
+.arr-guide-foot {
+  border-top: 0;
+  background: linear-gradient(90deg, var(--gold, #f3c76b), var(--cyan, #6fe3ff) 45%, var(--violet, #b48cff)) top left / 100% 1px no-repeat;
+}
+.arr-tip .arr-kbd-big {
+  box-shadow: 0 0 22px -4px color-mix(in srgb, var(--accent) 70%, transparent);
+}
+.arr-steps button {
+  overflow-wrap: anywhere;
+}
+.arr-dialog .arr-title {
+  letter-spacing: -0.01em;
+}
+
+/* ── motion: Drift is the star field as it's always been; Shooting stars quickens the page's
+      own animation; Still stops it (the kit's own rule) ─────────────────────────────────── */
+[data-motion="vivid"] .orbit-map .halo {
+  animation-duration: 11s;
+}
+[data-motion="vivid"] .orbit-map .core {
+  animation-duration: 9s;
+}
+[data-motion="vivid"] .porch h1 {
+  animation-duration: 5s;
+}
+
+/* ── PIR's header (.top, from alex.css): the kit's tools sit after the pages ─────────────── */
+.top arrival-controls {
+  flex: none;
+}
+.top nav + arrival-controls {
+  margin-left: 0.25rem;
+}
+@media (max-width: 1100px) {
+  .top [data-arr-drawer] .arr-chip-label {
+    display: none;
+  }
+}
+@media (max-width: 620px) {
+  .top arrival-controls {
+    margin-left: auto;
+  }
+}
+
+/* ── more contrast: the A.L.E.X. tokens follow the kit's, and the sky goes quiet behind words ── */
+html[data-contrast="more"] {
+  --faint: color-mix(in srgb, var(--foreground) 72%, var(--background));
+  --line: color-mix(in srgb, var(--foreground) 30%, transparent);
+  --line-strong: color-mix(in srgb, var(--foreground) 52%, transparent);
+  --panel: var(--panel-solid);
+}
+html[data-contrast="more"] body {
+  background: var(--ink);
+}
+html[data-contrast="more"] #starfield-canvas {
+  opacity: 0.4;
+}
+html[data-contrast="more"] .orbit-map .halo {
+  opacity: 0.18;
+}

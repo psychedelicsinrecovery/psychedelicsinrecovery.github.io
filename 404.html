@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-arrival-site="portal" data-arrival-splash="off">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,16 +9,31 @@
      asset below must stay absolute, or "back" loops into another 404. -->
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="alternate icon" href="/favicon.png">
+<meta name="description" content="This page took a wrong turn. Nothing broke; the link just doesn't lead anywhere yet. The way back is here.">
+<meta property="og:site_name" content="PIR® on GitHub">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://psychedelicsinrecovery.github.io/404.html">
 <meta property="og:title" content="Page not found — PIR® GitHub">
 <meta property="og:description" content="This page took a wrong turn — nothing broke, the link just doesn't lead anywhere yet.">
 <meta property="og:image" content="https://psychedelicsinrecovery.github.io/social-card.jpg">
-<meta property="og:url" content="https://psychedelicsinrecovery.github.io/404.html">
-<meta property="og:type" content="website">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="629">
+<meta property="og:image:alt" content="PIR®, Psychedelics In Recovery™: the fellowship's mark over a night sky.">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Page not found — PIR® GitHub">
+<meta name="twitter:description" content="This page took a wrong turn — nothing broke, the link just doesn't lead anywhere yet.">
+<meta name="twitter:image" content="https://psychedelicsinrecovery.github.io/social-card.jpg">
+<meta name="twitter:image:alt" content="PIR®, Psychedelics In Recovery™: the fellowship's mark over a night sky.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400&family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/fill/style.css">
-<script>try{var t=localStorage.getItem('pir-theme');document.documentElement.dataset.theme=(t==='light'||t==='dark')?t:'dark'}catch(e){document.documentElement.dataset.theme='dark'}</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css">
+<!-- The arrival kit (no first-visit splash on a wrong turn; "/" search still works). Absolute URLs. -->
+<link rel="stylesheet" href="/arrival/arrival.css">
+<link rel="stylesheet" href="/arrival/org.css">
+<script src="/arrival/org.js"></script>
+<script src="/arrival/arrival.js"></script>
 <link rel="stylesheet" href="/alex-desk-public/assets/alex.css">
 <link rel="stylesheet" href="/changelog-astro-public/astrolog.css">
 <style>
@@ -36,8 +51,7 @@
     <a href="https://psychedelicsinrecovery.github.io/changelog-astro-public/changelog">Changelog</a>
     <a href="https://psychedelicsinrecovery.github.io/changelog-astro-public/library">Library</a>
   </nav>
-  <button class="tool" data-palette aria-label="Jump anywhere (press slash)"><i class="ph-fill ph-magnifying-glass" aria-hidden="true"></i><span class="lbl">Jump</span><kbd>/</kbd></button>
-  <button class="tool" data-theme-toggle aria-label="Toggle light and dark theme"><i class="ph-fill ph-moon-stars moon" aria-hidden="true"></i><i class="ph-fill ph-sun sun" aria-hidden="true"></i></button>
+  <arrival-controls></arrival-controls>
 </div></header>
 
 <main id="main">
@@ -53,6 +67,7 @@
       <a class="btn" href="https://www.psychedelicsinrecovery.org"><i class="ph-fill ph-globe" aria-hidden="true"></i>Main site</a>
       <a class="btn" href="https://psychedelicsinrecovery.github.io/changelog-astro-public/"><i class="ph-fill ph-door-open" aria-hidden="true"></i>Astro Porch</a>
       <a class="btn" href="https://github.com/psychedelicsinrecovery"><i class="ph-fill ph-github-logo" aria-hidden="true"></i>Source repo</a>
+      <button type="button" class="btn" data-arrival-open="search"><i class="ph-fill ph-magnifying-glass" aria-hidden="true"></i>Search instead <kbd>/</kbd></button>
     </div>
   </div>
 
