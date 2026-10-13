@@ -170,15 +170,37 @@
 .top nav + arrival-controls {
   margin-left: 0.25rem;
 }
-@media (max-width: 1100px) {
+@media (max-width: 1440px) {
   .top [data-arr-drawer] .arr-chip-label {
     display: none;
+  }
+}
+@media (max-width: 1240px) {
+  .top .arr-chip-search .arr-chip-label,
+  .top .arr-chip-search kbd {
+    display: none;
+  }
+  .top .arr-chip-search {
+    width: 34px;
+    padding: 0;
+    justify-content: center;
   }
 }
 @media (max-width: 620px) {
   .top arrival-controls {
     margin-left: auto;
   }
+}
+
+/* ── reading mode: the sky all but fades, the orbit stops glowing ──────────────────────────── */
+:root[data-reading="on"] #starfield-canvas {
+  opacity: 0.22;
+}
+:root[data-reading="on"] .orbit-map .halo {
+  opacity: 0.12;
+}
+:root[data-reading="on"] body {
+  background: var(--ink);
 }
 
 /* ── more contrast: the A.L.E.X. tokens follow the kit's, and the sky goes quiet behind words ── */

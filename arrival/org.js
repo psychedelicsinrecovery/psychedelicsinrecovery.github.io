@@ -122,7 +122,7 @@
     // The ids stay "dark" and "light" because the A.L.E.X. design system (alex.css) is keyed on them.
     modes: [
       { id: "dark", name: "Night sky", note: "Deep indigo, starlight, and violet, cyan and gold. PIR's home look.", swatch: ["#06050e", "#b48cff"], dark: true },
-      { id: "light", name: "Daybreak", note: "Lavender morning light with ink-dark text, for bright rooms.", swatch: ["#f7f4fd", "#6b3fd1"] },
+      { id: "light", name: "Daybreak", note: "Lavender morning light with ink-dark text, for bright rooms.", swatch: ["#f7f4fd", "#6b3fd1"], calm: true },
       {
         id: "sky",
         name: "Follow the sky",
@@ -137,6 +137,14 @@
       },
     ],
     defaultMode: "dark",
+
+    // Reading mode: one tap for the calmest page (Daybreak, the stars still, more contrast, no
+    // cursor effects); another tap goes back to how the visitor had it.
+    reading: { light: "light" },
+
+    // "What's new since your last visit": a quiet count of entries, write-ups and ledger changes
+    // newer than the visitor's last visit, read from the AstroLog's latest.json.
+    news: { sources: [LOG + "/latest.json"] },
 
     // Motion is the star field behind every page. Drift is the field as it has always been: the stars
     // twinkle, part around your pointer, and leave a little comet dust. Shooting stars adds the odd
@@ -187,6 +195,13 @@
         text: "The longer write-ups behind the work, honest about the wrong turns along the way. The changelog says what changed; the library explains how it works.",
         href: LOG + "/library",
         label: "Open the library",
+      },
+      ledger: {
+        name: "The ledger",
+        icon: "scroll",
+        text: "Every public change to PIR's open repositories on GitHub, in plain words, sorted by kind and grouped by month, day and repository. It gathers itself again every day.",
+        href: LOG + "/ledger",
+        label: "Open the ledger",
       },
     },
 
@@ -258,6 +273,7 @@
         { t: "De Vine News dashboard", k: "link", i: "newspaper", h: "https://drasticstatic.github.io/pir-devine-news-public/dashboard", x: "newsletter devine news pipeline" },
         { t: "PIR® on GitHub", k: "link", i: "github-logo", h: "https://github.com/psychedelicsinrecovery", x: "organization repos code source" },
         { t: "RSS feed of the changelog", k: "feed", i: "rss-simple", h: LOG + "/rss.xml", x: "rss subscribe feed reader" },
+        { t: "The ledger: every public change", k: "page", i: "scroll", h: LOG + "/ledger", pin: true, x: "commits history github activity record public repositories" },
       ],
     },
   };
