@@ -45,12 +45,10 @@
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <canvas id="starfield-canvas" aria-hidden="true"></canvas>
+<!-- The same one-row header as every PIR page (links absolute: this page is served at any depth). -->
 <header class="top"><div class="wrap">
-  <a class="brand" href="/"><img src="/favicon.svg" alt="" width="34" height="34">PIR® <small>on GitHub</small></a>
-  <nav aria-label="Main">
-    <a href="https://psychedelicsinrecovery.github.io/changelog-astro-public/changelog">Changelog</a>
-    <a href="https://psychedelicsinrecovery.github.io/changelog-astro-public/library">Library</a>
-  </nav>
+  <a class="brand" href="/" aria-label="PIR® on GitHub, home"><img src="/favicon.svg" alt="" width="34" height="34"><span class="arr-brand-text">PIR® <small>on GitHub</small></span></a>
+  <arrival-nav></arrival-nav>
   <arrival-controls></arrival-controls>
 </div></header>
 
@@ -84,13 +82,11 @@
   </section>
 </main>
 
-<footer><div class="wrap">
+<footer><div class="wrap pir-foot">
   <div><a class="brand" href="/" style="margin-bottom:.6rem"><img src="/favicon.svg" alt="" width="34" height="34">PIR®</a>
     <span>Psychedelics In Recovery™: integrating psychedelics into recovery.</span>
     <a class="tended" href="https://psychedelicsinrecovery.github.io/catalyst-desk-public/"><span class="cat-mark" aria-hidden="true"></span>Tended by <b>C.A.T.A.L.Y.S.T.</b>, PIR®'s helper fleet</a></div>
-  <div><b>AstroLog</b><a href="https://psychedelicsinrecovery.github.io/changelog-astro-public/"><i class="ph-fill ph-door-open" aria-hidden="true"></i>Porch</a><a href="https://psychedelicsinrecovery.github.io/changelog-astro-public/changelog"><i class="ph-fill ph-clock-counter-clockwise" aria-hidden="true"></i>Changelog</a><a href="https://psychedelicsinrecovery.github.io/changelog-astro-public/library"><i class="ph-fill ph-books" aria-hidden="true"></i>Library</a></div>
-  <div><b>Helpers</b><a href="https://psychedelicsinrecovery.github.io/alex-desk-public/"><i class="ph-fill ph-planet" aria-hidden="true"></i>A.L.E.X.</a><a href="https://psychedelicsinrecovery.github.io/litcom-desk-public/"><i class="ph-fill ph-scroll" aria-hidden="true"></i>LitCom desk</a><a href="https://psychedelicsinrecovery.github.io/techcom-desk-public/"><i class="ph-fill ph-desktop" aria-hidden="true"></i>TechCom desk</a></div>
-  <div><b>PIR®</b><a href="https://www.psychedelicsinrecovery.org"><i class="ph-fill ph-globe" aria-hidden="true"></i>psychedelicsinrecovery.org</a><a href="https://www.psychedelicsinrecovery.org/contact/"><i class="ph-fill ph-chat-circle-text" aria-hidden="true"></i>Reach out</a><a class="sos" href="https://www.psychedelicsinrecovery.org/crisis-resources/"><i class="ph-fill ph-lifebuoy" aria-hidden="true"></i>Crisis resources</a></div>
+  <arrival-footer></arrival-footer>
 </div></footer>
 
 <nav class="dock" aria-label="Quick links"><div class="wrap">
@@ -99,7 +95,8 @@
   <a href="https://psychedelicsinrecovery.github.io/changelog-astro-public/"><i class="ph-fill ph-door-open" aria-hidden="true"></i>Porch</a>
   <a href="https://psychedelicsinrecovery.github.io/changelog-astro-public/changelog"><i class="ph-fill ph-clock-counter-clockwise" aria-hidden="true"></i>Changelog</a>
   <a href="https://psychedelicsinrecovery.github.io/changelog-astro-public/library"><i class="ph-fill ph-books" aria-hidden="true"></i>Library</a>
-  <a class="end" href="https://www.psychedelicsinrecovery.org/contact/"><i class="ph-fill ph-chat-circle-text" aria-hidden="true"></i><span class="lg">Reach out</span><span class="sm">Contact</span></a>
+  <a href="https://psychedelicsinrecovery.github.io/map/"><i class="ph-fill ph-map-trifold" aria-hidden="true"></i>Map</a>
+  <a class="end" href="https://www.psychedelicsinrecovery.org/contact/" data-arrival-open="contact"><i class="ph-fill ph-chat-circle-text" aria-hidden="true"></i><span class="lg">Reach out</span><span class="sm">Contact</span></a>
 </div></nav>
 
 <script>
@@ -125,7 +122,11 @@
     { l: 'Brand assets', u: 'https://github.com/psychedelicsinrecovery/brand-assets', k: 'brand logo logos assets' },
     { l: 'Contacts & structure', u: 'https://github.com/psychedelicsinrecovery/.github/blob/main/CONTACTS.md', k: 'contact contacts email structure committees' },
     { l: 'Privacy policy', u: 'https://github.com/psychedelicsinrecovery/.github/blob/main/privacy-policy.md', k: 'privacy policy data' },
-    { l: 'psychedelicsinrecovery.org', u: 'https://www.psychedelicsinrecovery.org', k: 'website main meetings home' }
+    { l: 'psychedelicsinrecovery.org', u: 'https://www.psychedelicsinrecovery.org', k: 'website main meetings home' },
+    { l: 'Map of everything', u: H + '/map/', k: 'map sitemap where everything desks' },
+    { l: 'Donate', u: H + '/donate/', k: 'donate give donation tradition seventh support' },
+    { l: 'Roadmap', u: H + '/changelog-astro-public/roadmap', k: 'roadmap plans future next' },
+    { l: 'Sustainability', u: H + '/changelog-astro-public/sustainability', k: 'sustainability maintenance upkeep' }
   ];
   var words = decodeURIComponent(path).toLowerCase().split(/[^a-z0-9]+/).filter(function (w) { return w.length > 2 && ['html', 'www', 'public', 'index'].indexOf(w) < 0; });
   D.map(function (e) { var s = 0; words.forEach(function (w) { if (e.k.indexOf(w) >= 0) s += 2; else if (w.length > 4 && e.k.indexOf(w.slice(0, 4)) >= 0) s += 1; }); return { e: e, s: s }; })

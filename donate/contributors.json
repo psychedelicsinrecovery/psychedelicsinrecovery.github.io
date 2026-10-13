@@ -1,0 +1,5 @@
+{
+  "_about": "The contribution ledger on /donate/. Only people and organizations who said yes to being thanked by name here. Each: { name (first name + last initial for a person, in keeping with PIR's anonymity traditions; no period), github?, url?, kind?: gift | sponsor | time | in-kind | founding, since?: YYYY-MM, note? }. Never an email, an amount, or anyone who has not opted in.",
+  "updated": "2026-10-13",
+  "contributors": []
+}

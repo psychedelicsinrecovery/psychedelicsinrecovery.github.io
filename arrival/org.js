@@ -1,5 +1,6 @@
-/* PIR®'s arrival config, read by arrival.js. Shared by every PIR page that loads the kit: the GitHub
-   hub (this site) and the AstroLog (by full URL).
+/* PIR®'s arrival config, read by arrival.js (kit v1.2). Shared by every PIR page that loads the kit:
+   the GitHub hub (this site: /, /donate/, /map/, the 404), the AstroLog and the desk portals (by
+   full URL; the desks swap in their own nav and footer before arrival.js runs).
 
    Every fact here comes from PIR's own materials: the hub and AstroLog, psychedelicsinrecovery.org,
    the public CONTACTS.md in psychedelicsinrecovery/.github, and A.L.E.X.'s portal. People appear by
@@ -13,6 +14,13 @@
   var SITE = "https://www.psychedelicsinrecovery.org";
   var DISCORD = "https://discord.gg/MyprTq8w95"; // the invite the hub, AstroLog and A.L.E.X. all use
   var CRISIS = SITE + "/crisis-resources/";
+  var SERVICE = "https://service.psychedelicsinrecovery.org";
+  var CONTACTS = "https://github.com/psychedelicsinrecovery/.github/blob/main/CONTACTS.md";
+  var PRIVACY = "https://github.com/psychedelicsinrecovery/.github/blob/main/privacy-policy.md";
+  var GIVE = SITE + "/7th-tradition/"; // PIR's own donation page (the org's FUNDING.yml points here too)
+  var WHATSAPP = SITE + "/whatsapp/";
+  var CATALYST = ROOT + "/catalyst-desk-public";
+  var ALEXANDRINA = "https://drasticstatic.github.io/alexandrina-public-preview/";
   // The night sky's colors, from violet round through cyan and gold to rose. They light the guide's
   // star (eight steps, eight points) and ring the initials avatars.
   var SKY = ["#b48cff", "#8d7cff", "#6fe3ff", "#5ee6c4", "#a6e08a", "#f3c76b", "#ffa77d", "#ff8fb1"];
@@ -168,16 +176,205 @@
     // Gravatar only ever for a psychedelicsinrecovery.org role address; personal addresses are refused.
     avatar: { shape: "circle", colors: SKY, roleDomains: ["psychedelicsinrecovery.org"], svg: avatarSvg },
 
+    // ── kit 1.2: the navbar, shared by the hub, the AstroLog and (by override) the desks ───────
+    // Lower priority folds into "More" first when the bar runs short; below 1100px it all folds
+    // into the Menu. Every link has an icon.
+    nav: {
+      label: "PIR®",
+      fold: 1100,
+      items: [
+        { id: "portal", label: "Hub", icon: "house", href: ROOT + "/", hideOn: ["portal"], priority: 1, note: "PIR's front door on GitHub" },
+        { id: "porch", label: "Porch", icon: "door-open", href: LOG + "/", exact: true, priority: 1, note: "The AstroLog's front door" },
+        { id: "changelog", label: "Changelog", icon: "clock-counter-clockwise", href: LOG + "/changelog", priority: 3, note: "What's shipped, newest first" },
+        { id: "library", label: "Library", icon: "books", href: LOG + "/library", priority: 2, note: "The write-ups on how it works" },
+        { id: "ledger", label: "Ledger", icon: "scroll", href: LOG + "/ledger", priority: 2, note: "Every public change, in plain words" },
+        { id: "map", label: "Map", icon: "map-trifold", href: LOG + "/map", hrefs: { portal: ROOT + "/map/" }, priority: 2, note: "Every place, with a picture of each" },
+        {
+          id: "helpers",
+          label: "Helpers",
+          icon: "planet",
+          priority: 2,
+          items: [
+            { id: "alex", label: "A.L.E.X.", icon: "planet", href: ALEX + "/", note: "PIR's Discord helper and its helpdesks" },
+            { id: "litcom", label: "LitCom desk", icon: "scroll", href: ROOT + "/litcom-desk-public/", note: "Literature requests, corrections and ideas" },
+            { id: "techcom", label: "TechCom desk", icon: "desktop", href: ROOT + "/techcom-desk-public/", note: "Websites, email, forms, Zoom and calendar" },
+            { id: "githubdesk", label: "GitHubDesk", icon: "github-logo", href: ROOT + "/github-desk-public/", note: "PIR's GitHub repos, Pages and access" },
+            { id: "prdesk", label: "PR Desk", icon: "megaphone", href: ROOT + "/pr-desk-public/", note: "Social, press, brand assets, De Vine News" },
+            { id: "catalyst", label: "C.A.T.A.L.Y.S.T.", icon: "sparkle", href: CATALYST + "/", note: "The helper fleet that tends the sites and desks" },
+            { id: "alexandrina", label: "Alexandrina", icon: "flame", href: ALEXANDRINA, note: "The engine A.L.E.X. runs on: a public preview" },
+          ],
+        },
+        {
+          id: "involved",
+          label: "Get involved",
+          icon: "hand-heart",
+          priority: 3,
+          items: [
+            { id: "community", label: "Community", icon: "users-three", href: DISCORD, open: "community", note: "Where the fellowship talks" },
+            { id: "contact", label: "Reach out", icon: "envelope-simple", href: SITE + "/contact/", open: "contact", note: "Every way to reach PIR, in one place" },
+            { id: "donate", label: "Donate", icon: "heart", href: ROOT + "/donate/", note: "Giving to PIR, and thanks by name" },
+            { id: "service", label: "Get into service", icon: "hand-heart", href: SITE + "/service/", note: "Ways to lend a hand" },
+          ],
+        },
+        {
+          id: "about",
+          label: "About",
+          icon: "info",
+          priority: 1,
+          items: [
+            { id: "roadmap", label: "Roadmap", icon: "path", href: LOG + "/roadmap", note: "Where these pages are headed" },
+            { id: "sustainability", label: "Sustainability", icon: "plant", href: LOG + "/sustainability", note: "What it takes to keep them running" },
+            { id: "home", label: "psychedelicsinrecovery.org", icon: "globe", href: SITE, note: "PIR's main site: meetings, history, service" },
+            { id: "servicesite", label: "Service site", icon: "buildings", href: SERVICE + "/", note: "The Board, committees and the service calendar" },
+            { id: "privacy", label: "Privacy policy", icon: "shield-check", href: PRIVACY, note: "What PIR collects, and why" },
+            { id: "github", label: "GitHub", icon: "github-logo", href: "https://github.com/psychedelicsinrecovery", note: "The organization and its open code" },
+            { id: "crisis", label: "Crisis resources", icon: "lifebuoy", href: CRISIS, note: "Need help right now? Any time." },
+          ],
+        },
+      ],
+    },
+    footer: {
+      label: "PIR®, all the ways around",
+      groups: [
+        { label: "Explore", icon: "compass", items: ["portal", "porch", "changelog", "library", "ledger", "map", { id: "rss", label: "RSS feed", icon: "rss-simple", href: LOG + "/rss.xml" }] },
+        { label: "Helpers", icon: "planet", items: ["alex", "litcom", "techcom", "githubdesk", "prdesk", "catalyst", "alexandrina"] },
+        { label: "Get involved", icon: "hand-heart", items: ["community", "contact", "donate", "service", { id: "guide", label: "Welcome guide", icon: "signpost", href: "#welcome", open: "guide" }] },
+        { label: "About", icon: "info", items: ["roadmap", "sustainability", "home", "servicesite", "privacy", "github", "crisis"] },
+      ],
+      note: "Code here is MIT licensed and the words are CC BY-SA 4.0. PIR® and Psychedelics In Recovery™ are marks of Psychedelics In Recovery, a 501(&zwnj;c)(3) nonprofit.",
+    },
+
+    // ── kit 1.2: one window for every way to reach PIR ─────────────────────────────────────────
+    // Every "Reach out" link opens it, and so does a plain click on any link to one of these paths
+    // (CONTACTS.md, either contact form, info@): before 1.2 some links went to GitHub and some to
+    // WordPress.
+    contact: {
+      title: "Reach out",
+      intro: "Every way to reach PIR®, in one place. Pick whichever suits you; each one reaches trusted servants.",
+      paths: [
+        {
+          kind: "page",
+          label: "PIR's contacts on GitHub",
+          href: CONTACTS,
+          action: "Open CONTACTS.md",
+          note: "Trusted servants, role mailboxes, committees and domains: who to reach for what, and how PIR fits together.",
+        },
+        {
+          kind: "form",
+          label: "The contact form on psychedelicsinrecovery.org",
+          href: SITE + "/contact/",
+          action: "Open the form",
+          note: "PIR's main site. The page also lists tech@ for website questions and pr@ for press.",
+        },
+        {
+          kind: "form",
+          label: "The service site's contact form",
+          href: SERVICE + "/contact/",
+          action: "Open the form",
+          note: "For service matters: the Board, the committees and the service calendar.",
+        },
+        {
+          kind: "email",
+          label: "info@psychedelicsinrecovery.org",
+          href: "mailto:info@psychedelicsinrecovery.org",
+          note: "General inquiries, as both contact pages list it.",
+        },
+      ],
+      fine:
+        'Need a committee? A.L.E.X.\'s <a href="' + ALEX + '/">helpdesks</a> open a private ticket with LitCom, TechCom, GitHub, PR or the Board, in Discord or on the web. Need help right now? <a href="' + CRISIS + '">Crisis resources</a>, any time.',
+    },
+
+    // ── where the fellowship talks: Discord (and its committee channels), WhatsApp threads, and a
+    //    sneak peek at a network of PIR's own ──────────────────────────────────────────────────────
     community: {
       name: "Discord",
       icon: "discord-logo",
       href: DISCORD,
-      label: "Join PIR's Discord",
+      label: "See every way in",
+      title: "Where we gather",
+      eyebrow: "Community",
       text: "The fellowship talks in PIR's Discord server. It's also where A.L.E.X., PIR's helper, answers questions from PIR's own published materials, with sources, and opens private helpdesk tickets for LitCom, TechCom, GitHub, PR and the Board.",
+      intro: "PIR's online home is its Discord server, where committees have channels of their own. Homegroups and service teams also keep WhatsApp threads.",
       more: [
         "Discord handles help members check who's real before trusting a DM: see <strong>whos-who</strong> and <strong>disclaimer</strong> once you're in.",
         'Need help right now? <a href="' + CRISIS + '">Crisis resources</a> are on the main site, any time.',
       ],
+      platforms: [
+        {
+          id: "discord",
+          kind: "discord",
+          name: "PIR's Discord",
+          text: "Fellowship, meeting news and A.L.E.X., PIR's helper: ask it anything about PIR® and it answers from PIR's own words, with sources. Check <strong>whos-who</strong> before trusting a DM.",
+          // There's no read-only view of the server yet, so the public slot shows "coming soon".
+          public: { label: "A public window" },
+          join: { href: DISCORD, label: "Join the Discord", note: "PIR's public invite." },
+        },
+        {
+          id: "committees",
+          kind: "discord",
+          icon: "hash",
+          name: "Committee channels",
+          // Only LitCom's channel is published (its service page invites people to #🖨lit-com). The
+          // others are labelled placeholders until each committee names its channel publicly.
+          text:
+            "Committees talk in channels of their own. <strong>#🖨lit-com</strong> is the Literature Committee's, as its service page invites. " +
+            '<span class="pir-ph">Placeholder: TechCom\'s, PR\'s and the Board\'s channel names aren\'t published yet.</span> ' +
+            "For a request, A.L.E.X.'s commands open a private ticket instead: <code>/litcom</code>, <code>/techcom</code>, <code>/github</code>, <code>/pr</code>, <code>/board</code>.",
+          public: { href: SERVICE + "/committees/", label: "See the committees", note: "Every committee's page on the service site." },
+          join: { href: DISCORD, label: "Join, then find the channel", note: "Same invite." },
+        },
+        {
+          id: "whatsapp",
+          kind: "whatsapp",
+          name: "PIR® WhatsApp threads",
+          text: "In the main site's words: “stay in touch with your homegroup and service threads.”",
+          public: { href: WHATSAPP, label: "See the threads", note: "Listed on psychedelicsinrecovery.org." },
+          join: { href: WHATSAPP, label: "Join a chat", note: "Open chats are linked there. For a closed meeting chat, ask your homegroup's GSR." },
+        },
+      ],
+      bespoke: {
+        title: "Looking ahead: a network of our own",
+        tag: "Sneak peek",
+        icon: "graph",
+        text: "In time, PIR® hopes to offer the fellowship a small social space of its own, owned by the community rather than by one company, and run the way PIR already runs: by group conscience.",
+        points: [
+          "Profiles and posts on open protocols like Lens and Farcaster, so what members share stays theirs.",
+          "Paired with a DAO, where trusted servants and groups can propose and decide together.",
+          "Anonymity first, in keeping with PIR's traditions: members choose what's public and what stays among members.",
+        ],
+        note: "No dates, and nothing to sign up for yet. This is a direction, not a promise.",
+      },
+      fine: "Discord and WhatsApp are third-party services with their own privacy terms. PIR's own policy: <a href=\"" + PRIVACY + "\">privacy-policy.md</a>.",
+    },
+
+    // ── kit 1.2: the donate page (/donate/) ────────────────────────────────────────────────────
+    // PIR is self-supporting under its traditions: it can't accept outside contributions, but it
+    // can accept donations, and other organizations have sponsored the journey. The disclaimer is a
+    // marked placeholder until the A.L.E.X. session writes the real wording (with the privacy
+    // policy, WooCommerce, books and merch). No wallet address, ever.
+    donate: {
+      give: [
+        {
+          label: "Give through PIR's 7th Tradition page",
+          icon: "heart",
+          href: GIVE,
+          action: "Open the 7th Tradition page",
+          note: "PIR's own donation page on psychedelicsinrecovery.org. In its words: “The 7th Tradition, emphasizing self-sufficiency, is vital for Psychedelics in Recovery (PIR) as it ensures the group remains autonomous and free from external influence.”",
+        },
+      ],
+      disclaimer: {
+        placeholder: true,
+        title: "About giving to PIR®",
+        text: "PIR® can't accept outside contributions, per its traditions, but it can accept donations, and other organizations have sponsored the journey. The full wording is being written alongside PIR's privacy policy, its shop, books and merchandise, and will replace this note.",
+      },
+      ledger: {
+        src: ROOT + "/donate/contributors.json",
+        title: "Contribution ledger",
+        intro: "People and organizations who have given time, skills or gifts to PIR's GitHub home, and agreed to be thanked here: people by first name and last initial, in keeping with PIR's anonymity traditions.",
+      },
+      crypto: {
+        text: "Giving from a crypto wallet is planned for this page: one button for browser wallets, phone wallets and email sign-in. It isn't open yet.",
+      },
     },
 
     record: {
@@ -213,6 +410,19 @@
       astrolog: {
         name: "the PIR® AstroLog",
         what: "The AstroLog is PIR's plain-language changelog and library: every finished piece of work, who did it, and the longer write-ups on how it all works.",
+      },
+      // The desk portals (kit 1.2, light touch: the header, nav, footer and windows; no splash).
+      alex: {
+        name: "A.L.E.X.",
+        what: "A.L.E.X. is PIR's Discord helper: it answers from PIR's own published words, with sources, and opens private helpdesk tickets so no request gets lost. These pages show how it works.",
+      },
+      desk: {
+        name: "a PIR® helpdesk",
+        what: "Each helpdesk is where one committee takes requests: in Discord or on the web desk, every request becomes a private ticket that a trusted servant claims, works on and resolves.",
+      },
+      catalyst: {
+        name: "C.A.T.A.L.Y.S.T.",
+        what: "C.A.T.A.L.Y.S.T. is the helper fleet that tends PIR's sites and desks, with a person directing every action. This chalkboard introduces them.",
       },
     },
 
@@ -274,6 +484,14 @@
         { t: "PIR® on GitHub", k: "link", i: "github-logo", h: "https://github.com/psychedelicsinrecovery", x: "organization repos code source" },
         { t: "RSS feed of the changelog", k: "feed", i: "rss-simple", h: LOG + "/rss.xml", x: "rss subscribe feed reader" },
         { t: "The ledger: every public change", k: "page", i: "scroll", h: LOG + "/ledger", pin: true, x: "commits history github activity record public repositories" },
+        { t: "Map: every place, with pictures", k: "page", i: "map-trifold", h: LOG + "/map", pin: true, x: "sitemap where everything links overview thumbnails desks" },
+        { t: "Donate", k: "page", i: "heart", h: ROOT + "/donate/", x: "give gift support 7th seventh tradition contribution ledger thanks crypto" },
+        { t: "PIR's 7th Tradition page", k: "main site", i: "heart", h: GIVE, x: "donate give self-supporting seventh tradition paypal" },
+        { t: "Roadmap", k: "page", i: "path", h: LOG + "/roadmap", x: "plans next future ideas direction" },
+        { t: "Sustainability", k: "page", i: "plant", h: LOG + "/sustainability", x: "maintenance keep running tokens costs upkeep" },
+        { t: "Service site contact form", k: "link", i: "envelope-simple", h: SERVICE + "/contact/", x: "reach out email contact service board committees" },
+        { t: "Alexandrina, the engine (preview)", k: "helper", i: "flame", h: ALEXANDRINA, x: "engine alexandrina library oracle" },
+        { t: "PIR® WhatsApp threads", k: "main site", i: "whatsapp-logo", h: WHATSAPP, x: "whatsapp chats homegroup gsr service threads" },
       ],
     },
   };

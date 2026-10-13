@@ -30,9 +30,10 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400&family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/fill/style.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css">
-<!-- PIR's arrival kit, shared with the AstroLog and served from /arrival/ on this site: the first-visit
-     "Choose how you arrive", light / motion / contrast / cursor effects (applied before first paint,
-     so it loads here in <head>), the welcome guide, "/" search and the avatars. -->
+<!-- PIR's arrival kit (v1.2), shared with the AstroLog and the desks and served from /arrival/ on this
+     site: the first-visit "Choose how you arrive", light / motion / contrast / text size / cursor
+     effects (applied before first paint, so it loads here in <head>), the navbar and footer, the
+     contact and community windows, the welcome guide, "/" search and the avatars. -->
 <link rel="stylesheet" href="/arrival/arrival.css">
 <link rel="stylesheet" href="/arrival/org.css">
 <script src="/arrival/org.js"></script>
@@ -66,6 +67,7 @@
   @media (max-width:760px){.serve{grid-template-columns:1fr}.serve .cta{justify-content:flex-start}}
   .hero h1 sup{font-size:.28em;vertical-align:top;position:relative;top:.35em;margin-left:.06em}
   #latest .chart{margin-top:.4rem}
+  #latest .what,#latest .gist{min-width:0;overflow-wrap:anywhere}
   #starfield-canvas{position:fixed;inset:0;z-index:-1;pointer-events:none}
 </style>
 </head>
@@ -73,15 +75,11 @@
 <a class="skip" href="#main">Skip to content</a>
 <div class="progress" aria-hidden="true"></div>
 <canvas id="starfield-canvas" aria-hidden="true"></canvas>
+<!-- One row at every width: the brand, the kit's navbar (from org.js: it folds into "More", then into
+     a Menu button below 1100px, rather than wrapping) and the kit's tools. -->
 <header class="top"><div class="wrap">
-  <a class="brand" href="/"><img src="/favicon.svg" alt="" width="34" height="34">PIR® <small>on GitHub</small></a>
-  <nav aria-label="Main">
-    <a href="https://psychedelicsinrecovery.github.io/changelog-astro-public/changelog"><i class="ph-fill ph-clock-counter-clockwise" aria-hidden="true"></i>Changelog</a>
-    <a href="https://psychedelicsinrecovery.github.io/changelog-astro-public/library"><i class="ph-fill ph-books" aria-hidden="true"></i>Library</a>
-    <a class="opt" href="https://psychedelicsinrecovery.github.io/alex-desk-public/"><i class="ph-fill ph-planet" aria-hidden="true"></i>A.L.E.X.</a>
-    <a class="opt" href="https://github.com/psychedelicsinrecovery"><i class="ph-fill ph-github-logo" aria-hidden="true"></i>Repos</a>
-  </nav>
-  <!-- Search, the lights + motion, and the light & motion drawer (arrival kit). -->
+  <a class="brand" href="/" aria-label="PIR® on GitHub, home"><img src="/favicon.svg" alt="" width="34" height="34"><span class="arr-brand-text">PIR® <small>on GitHub</small></span></a>
+  <arrival-nav></arrival-nav>
   <arrival-controls></arrival-controls>
 </div></header>
 
@@ -94,7 +92,7 @@
       <div class="cta">
         <a class="btn primary" href="https://www.psychedelicsinrecovery.org"><i class="ph-fill ph-globe" aria-hidden="true"></i>Visit the main PIR site</a>
         <a class="btn" href="https://service.psychedelicsinrecovery.org"><i class="ph-fill ph-hand-heart" aria-hidden="true"></i>Service site</a>
-        <a class="btn" href="https://discord.gg/MyprTq8w95"><i class="ph-fill ph-discord-logo" aria-hidden="true"></i>Join the Discord</a>
+        <a class="btn" href="https://discord.gg/MyprTq8w95" data-arrival-open="community"><i class="ph-fill ph-discord-logo" aria-hidden="true"></i>Join the Discord</a>
       </div>
       <p class="hint arr-hint">Press <kbd>/</kbd> to search anywhere across PIR's pages, the AstroLog included. New here? <a href="#welcome" data-arrival-open="guide">Take the welcome tour</a>.</p>
     </div>
@@ -170,13 +168,12 @@
   </section>
 </main>
 
-<footer><div class="wrap">
+<footer><div class="wrap pir-foot">
   <div><a class="brand" href="/" style="margin-bottom:.6rem"><img src="/favicon.svg" alt="" width="34" height="34">PIR®</a>
-    <span>Psychedelics In Recovery™ is a 501(c)(3) nonprofit and fellowship. Our primary purpose is to pursue recovery and help others do the same, as defined by the individual.</span>
+    <span>Psychedelics In Recovery™ is a 501(&zwnj;c)(3) nonprofit and fellowship. Our primary purpose is to pursue recovery and help others do the same, as defined by the individual.</span>
     <a class="tended" href="https://psychedelicsinrecovery.github.io/catalyst-desk-public/"><span class="cat-mark" aria-hidden="true"></span>Tended by <b>C.A.T.A.L.Y.S.T.</b>, PIR®'s helper fleet</a></div>
-  <div><b>AstroLog</b><a href="https://psychedelicsinrecovery.github.io/changelog-astro-public/"><i class="ph-fill ph-door-open" aria-hidden="true"></i>Porch</a><a href="https://psychedelicsinrecovery.github.io/changelog-astro-public/changelog"><i class="ph-fill ph-clock-counter-clockwise" aria-hidden="true"></i>Changelog</a><a href="https://psychedelicsinrecovery.github.io/changelog-astro-public/library"><i class="ph-fill ph-books" aria-hidden="true"></i>Library</a><a href="https://psychedelicsinrecovery.github.io/changelog-astro-public/ledger"><i class="ph-fill ph-scroll" aria-hidden="true"></i>Ledger</a><a href="https://psychedelicsinrecovery.github.io/changelog-astro-public/rss.xml"><i class="ph-fill ph-rss-simple" aria-hidden="true"></i>RSS feed</a><a href="/404.html"><i class="ph-fill ph-map-trifold" aria-hidden="true"></i>What a wrong turn looks like</a></div>
-  <div><b>Helpers</b><a href="https://psychedelicsinrecovery.github.io/alex-desk-public/"><i class="ph-fill ph-planet" aria-hidden="true"></i>A.L.E.X.</a><a href="https://psychedelicsinrecovery.github.io/litcom-desk-public/"><i class="ph-fill ph-scroll" aria-hidden="true"></i>LitCom desk</a><a href="https://psychedelicsinrecovery.github.io/techcom-desk-public/"><i class="ph-fill ph-desktop" aria-hidden="true"></i>TechCom desk</a><a href="https://psychedelicsinrecovery.github.io/github-desk-public/"><i class="ph-fill ph-github-logo" aria-hidden="true"></i>GitHubDesk</a><a href="https://psychedelicsinrecovery.github.io/pr-desk-public/"><i class="ph-fill ph-megaphone" aria-hidden="true"></i>PR Desk</a></div>
-  <div><b>PIR®</b><a href="https://www.psychedelicsinrecovery.org"><i class="ph-fill ph-globe" aria-hidden="true"></i>psychedelicsinrecovery.org</a><a href="https://discord.gg/MyprTq8w95"><i class="ph-fill ph-discord-logo" aria-hidden="true"></i>Discord</a><a href="https://github.com/psychedelicsinrecovery/.github/blob/main/CONTACTS.md"><i class="ph-fill ph-address-book" aria-hidden="true"></i>Contacts</a><a href="https://github.com/psychedelicsinrecovery/.github/blob/main/privacy-policy.md"><i class="ph-fill ph-shield-check" aria-hidden="true"></i>Privacy</a><a href="https://github.com/psychedelicsinrecovery/psychedelicsinrecovery.github.io"><i class="ph-fill ph-github-logo" aria-hidden="true"></i>Source repo</a><a href="#welcome" data-arrival-open="guide"><i class="ph-fill ph-compass" aria-hidden="true"></i>Welcome guide</a><a class="sos" href="https://www.psychedelicsinrecovery.org/crisis-resources/"><i class="ph-fill ph-lifebuoy" aria-hidden="true"></i>Crisis resources</a></div>
+  <!-- Every way around, in groups, an icon on each link (drawn by the kit from org.js: footer.groups). -->
+  <arrival-footer></arrival-footer>
 </div></footer>
 
 <nav class="dock" aria-label="Quick links"><div class="wrap">
@@ -185,7 +182,9 @@
   <a href="https://psychedelicsinrecovery.github.io/changelog-astro-public/"><i class="ph-fill ph-door-open" aria-hidden="true"></i>Porch</a>
   <a href="https://psychedelicsinrecovery.github.io/changelog-astro-public/changelog"><i class="ph-fill ph-clock-counter-clockwise" aria-hidden="true"></i>Changelog</a>
   <a href="https://psychedelicsinrecovery.github.io/changelog-astro-public/library"><i class="ph-fill ph-books" aria-hidden="true"></i>Library</a>
-  <a class="end" href="https://www.psychedelicsinrecovery.org/contact/"><i class="ph-fill ph-chat-circle-text" aria-hidden="true"></i><span class="lg">Reach out</span><span class="sm">Contact</span></a>
+  <a href="/map/"><i class="ph-fill ph-map-trifold" aria-hidden="true"></i>Map</a>
+  <a href="https://discord.gg/MyprTq8w95" data-arrival-open="community"><i class="ph-fill ph-users-three" aria-hidden="true"></i>Community</a>
+  <a class="end" href="https://www.psychedelicsinrecovery.org/contact/" data-arrival-open="contact"><i class="ph-fill ph-chat-circle-text" aria-hidden="true"></i><span class="lg">Reach out</span><span class="sm">Contact</span></a>
 </div></nav>
 
 <script>
