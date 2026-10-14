@@ -1,4 +1,4 @@
-/* PIR®'s arrival config, read by arrival.js (kit v1.2). Shared by every PIR page that loads the kit:
+/* PIR®'s arrival config, read by arrival.js (kit v1.3). Shared by every PIR page that loads the kit:
    the GitHub hub (this site: /, /donate/, /map/, the 404), the AstroLog and the desk portals (by
    full URL; the desks swap in their own nav and footer before arrival.js runs).
 
@@ -352,6 +352,13 @@
     // can accept donations, and other organizations have sponsored the journey. The disclaimer is a
     // marked placeholder until the A.L.E.X. session writes the real wording (with the privacy
     // policy, WooCommerce, books and merch). No wallet address, ever.
+    // Give with crypto (kit v1.3, arrival/give/give.js) stays OFF for PIR: under its traditions PIR
+    // can't accept outside contributions, and how donations and sponsorship are described is being
+    // written in the A.L.E.X. session (~/code/pir/pending-tasks.md, "(Alex) Donate-page disclaimer").
+    // With enabled: false the donate page keeps its empty "coming soon" crypto slot and the
+    // placeholder disclaimer below. Don't switch it on without that wording.
+    give: { enabled: false },
+
     donate: {
       give: [
         {
