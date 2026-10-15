@@ -1,14 +1,83 @@
-/* more-tree.css — the More panel as a small tree: parent labels, children offset.
+/* more-tree.css — the More panel as a small tree with flyout side menus (kit 1.3.1).
+   Structure (built by arrival.js v1.3.1): the panel's list lives in .arr-nav-more-scroll;
+   each category is a button (.arr-nav-more-h) whose rows open in .arr-nav-fly, a side menu
+   positioned by JS outside the scroll wrapper so it never gets clipped.
    Loaded on every suite page by org.js (which injects it next to itself). */
-.arr-nav-more > :not(.arr-nav-more-h) {
-  margin-left: 1.4rem;
+
+/* the scrollable list */
+.arr-nav-more .arr-in {
+  position: relative;
 }
-.arr-nav-more-group > :not(.arr-nav-more-h) {
-  margin-left: 1.4rem;
+.arr-nav-more-scroll {
+  max-height: min(72vh, 36rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  padding: 0.35rem 0.95rem 0.95rem;
 }
-.arr-nav-more [data-arr-more-k] {
+.arr-nav-more-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+.arr-nav-more-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 4px;
+}
+
+/* the tree: each category's children sit offset under a ruled edge */
+.arr-nav-more-group {
   border-left: 1px solid rgba(255, 255, 255, 0.12);
   padding-left: 0.7rem;
+  margin-top: 0.35rem;
+}
+.arr-nav-more-group > .arr-nav-rows {
+  margin-left: 1.4rem;
+}
+
+/* category headers became real buttons that open the side menus */
+.arr-nav-more-h {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  margin: 0;
+  padding: 0.45rem 0.55rem;
+  background: none;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 9px;
+}
+.arr-nav-more-h:hover,
+.arr-nav-more-h[aria-expanded="true"] {
+  background: rgba(255, 255, 255, 0.07);
+}
+.arr-fly-caret {
+  margin-left: auto;
+  font-size: 0.8em;
+  opacity: 0.7;
+  transition: transform 0.15s ease;
+}
+.arr-nav-more-h[aria-expanded="true"] .arr-fly-caret {
+  transform: rotate(90deg);
+}
+
+/* the side menu itself: outside the scroll wrapper, positioned by openFly() */
+.arr-nav-fly {
+  position: absolute;
+  z-index: 30;
+  min-width: 15rem;
+  max-width: 20rem;
+  filter: drop-shadow(0 14px 34px rgba(0, 0, 0, 0.55));
+}
+.arr-nav-fly .arr-nav-rows {
+  margin: 0.35rem 0.95rem 0.95rem;
+  max-height: min(60vh, 30rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
 }
 
 /* 2026-10-15: with the twelve committee desks landing in the menu, the More panel

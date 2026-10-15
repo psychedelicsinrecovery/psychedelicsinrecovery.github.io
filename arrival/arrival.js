@@ -1913,7 +1913,7 @@
           li + '<button type="button" class="arr-nav-a arr-nav-btn' + (cur ? " is-current" : "") + '" data-arr-nav-toggle aria-expanded="false" aria-controls="' + mid + '">' +
           icon(it.icon || "list") + '<span class="arr-nav-label">' + esc(it.label) + '</span><i class="ph ph-caret-down arr-caret" aria-hidden="true"></i></button></li>';
         menus += '<div class="arr-nav-menu arr-lift" id="' + mid + '" hidden><div class="arr-frame arr-shape"><div class="arr-in arr-shape"><ul class="arr-nav-rows">' + rows + "</ul></div></div></div>";
-        more += '<div class="arr-nav-more-group" data-arr-more-k="' + k + '" hidden><p class="arr-nav-more-h">' + icon(it.icon || "list") + esc(it.label) + '</p><ul class="arr-nav-rows">' + rows + "</ul></div>";
+        more += '<div class="arr-nav-more-group" data-arr-more-k="' + k + '" hidden><button type="button" class="arr-nav-more-h" data-arr-more-fly="' + k + '" aria-expanded="false" aria-haspopup="true">' + icon(it.icon || "list") + '<span class="arr-nav-more-label">' + esc(it.label) + '</span><i class="ph ph-caret-right arr-fly-caret" aria-hidden="true"></i></button></div>';
         groups.push({ label: it.label, icon: it.icon, rows: rows });
       } else {
         bar += li + linkTag(it, "arr-nav-a", forced) + "</li>";
@@ -1930,7 +1930,7 @@
       '<li class="arr-nav-li arr-nav-more-li" data-arr-nav-more hidden><button type="button" class="arr-nav-a arr-nav-btn" data-arr-nav-toggle aria-expanded="false" aria-controls="' + moreId + '">' +
       icon("dots-three-circle") + '<span class="arr-nav-label">' + esc(NAV.moreLabel || W.more) + '</span><i class="ph ph-caret-down arr-caret" aria-hidden="true"></i></button></li>' +
       "</ul>" + menus +
-      '<div class="arr-nav-menu arr-nav-more arr-lift" id="' + moreId + '" hidden><div class="arr-frame arr-shape"><div class="arr-in arr-shape">' + more + "</div></div></div>" +
+      '<div class="arr-nav-menu arr-nav-more arr-lift" id="' + moreId + '" hidden><div class="arr-frame arr-shape"><div class="arr-in arr-shape"><div class="arr-nav-more-scroll">' + more + '</div><div class="arr-nav-fly" hidden></div></div></div></div>' +
       // Folded: one Menu button (it carries the what's-new count), and the panel it opens.
       '<button type="button" class="arr-chip arr-shape arr-menu-btn" data-arr-menu aria-expanded="false" aria-controls="' + menuId + '">' +
       '<span class="arr-menu-icon">' + icon("list") + '</span><span class="arr-menu-label">' + esc(NAV.menuLabel || W.menu) + "</span>" +
@@ -2699,6 +2699,46 @@
     if (what === "community") return hasCommunity;
     return true;
   }
+  // v1.3.1: the More panel's categories open side menus (flyouts)
+  function closeFly(panel) {
+    if (!panel) return;
+    var f = panel.querySelector(".arr-nav-fly");
+    if (f) {
+      f.hidden = true;
+      f.innerHTML = "";
+    }
+    var opens = panel.querySelectorAll('.arr-nav-more-h[aria-expanded="true"]');
+    for (var i = 0; i < opens.length; i++) opens[i].setAttribute("aria-expanded", "false");
+  }
+  function closeFlys() {
+    var panels = doc.querySelectorAll(".arr-nav-more");
+    for (var i = 0; i < panels.length; i++) closeFly(panels[i]);
+  }
+  function openFly(panel, btn) {
+    var k = btn.getAttribute("data-arr-more-fly");
+    var hostEl = btn.closest("arrival-nav");
+    var li = hostEl && hostEl.querySelector('li[data-arr-nav-k="' + k + '"]');
+    var barBtn = li && li.querySelector("button");
+    var p = barBtn && panelOf(barBtn);
+    var rows = p && p.querySelector(".arr-nav-rows");
+    var fly = panel.querySelector(".arr-nav-fly");
+    if (!rows || !fly) return;
+    closeFly(panel);
+    fly.innerHTML = '<div class="arr-frame arr-shape"><div class="arr-in arr-shape">' + rows.outerHTML + "</div></div>";
+    var inEl = panel.querySelector(".arr-in");
+    var pr = inEl.getBoundingClientRect();
+    var br = btn.getBoundingClientRect();
+    fly.hidden = false;
+    var fw = fly.offsetWidth;
+    var fh = fly.offsetHeight;
+    var left = br.right - pr.left + 8;
+    if (pr.left + left + fw > doc.documentElement.clientWidth - 12) left = br.left - pr.left - fw - 8;
+    fly.style.left = Math.max(8, Math.round(left)) + "px";
+    var top = br.top - pr.top;
+    if (pr.top + top + fh > doc.documentElement.clientHeight - 12) top = doc.documentElement.clientHeight - fh - 12 - pr.top;
+    fly.style.top = Math.max(8, Math.round(top)) + "px";
+    btn.setAttribute("aria-expanded", "true");
+  }
   doc.addEventListener("click", function (e) {
     var t = e.target && e.target.closest ? e.target : null;
     if (!t) return;
@@ -2709,7 +2749,16 @@
       else openNav(b);
       return;
     }
+    // v1.3.1: a category in the More panel opens a side menu
+    if ((b = t.closest("[data-arr-more-fly]"))) {
+      var mp = b.closest(".arr-nav-more");
+      var wasOpen = b.getAttribute("aria-expanded") === "true";
+      closeFly(mp);
+      if (!wasOpen) openFly(mp, b);
+      return;
+    }
     if (!t.closest(".arr-nav-menu, .arr-menu-panel")) closeNavs(false);
+    else if (!t.closest(".arr-nav-fly, .arr-nav-more-h")) closeFly(t.closest(".arr-nav-menu"));
     // v1.3: every button of the give-with-crypto module (on the page or in its guide) goes to give.js.
     if (GIVE && (b = t.closest("[data-give]")) && !b.disabled) {
       var gsec = b.closest("[data-arr-give]") || doc.querySelector("[data-arr-give]");
