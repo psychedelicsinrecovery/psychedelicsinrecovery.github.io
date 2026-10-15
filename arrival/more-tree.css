@@ -10,3 +10,19 @@
   border-left: 1px solid rgba(255, 255, 255, 0.12);
   padding-left: 0.7rem;
 }
+
+/* 2026-10-15: with the twelve committee desks landing in the menu, the More panel
+   (and every dropdown that hosts a tree) must scroll, not clip, when its list grows. */
+.arr-nav-more {
+  max-height: min(72vh, 36rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+}
+.arr-nav-more::-webkit-scrollbar {
+  width: 8px;
+}
+.arr-nav-more::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 4px;
+}
