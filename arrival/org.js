@@ -1,3 +1,17 @@
+/* Inject more-tree.css next to this file so every suite page gets the tree-style More panel */
+(function () {
+  try {
+    var sc = document.currentScript;
+    if (sc && sc.src && !document.querySelector('link[data-arr-more-tree]')) {
+      var l = document.createElement('link');
+      l.rel = 'stylesheet';
+      l.setAttribute('data-arr-more-tree', '');
+      l.href = sc.src.replace(/org\.js(?:\?.*)?$/, 'more-tree.css');
+      document.head.appendChild(l);
+    }
+  } catch (e) {}
+})();
+
 /* PIR®'s arrival config, read by arrival.js (kit v1.3). Shared by every PIR page that loads the kit:
    the GitHub hub (this site: /, /donate/, /map/, the 404), the AstroLog and the desk portals (by
    full URL; the desks swap in their own nav and footer before arrival.js runs).
@@ -190,6 +204,19 @@
         { id: "ledger", label: "Ledger", icon: "scroll", href: LOG + "/ledger", priority: 2, note: "Every public change, in plain words" },
         { id: "map", label: "Map", icon: "map-trifold", href: LOG + "/map", hrefs: { portal: ROOT + "/map/" }, priority: 2, note: "Every place, with a picture of each" },
         {
+          id: "gatherings",
+          label: "Gatherings",
+          icon: "confetti",
+          priority: 2,
+          note: "The conventions and photo albums of the fellowship",
+          items: [
+            { id: "convention", label: "Convention", icon: "confetti", href: ROOT + "/convention-astro/", note: "The story of each gathering, on GitHub" },
+            { id: "galleries", label: "Galleries", icon: "images", href: ROOT + "/gallery/", note: "The fellowship's photo albums" },
+            { id: "schedule", label: "Schedule", icon: "list-checks", href: SITE + "/convention-2026-schedule/", note: "Day cards and printable PDFs" },
+            { id: "livestream", label: "Live stream", icon: "video-camera", href: SITE + "/convention-live-stream/", note: "Watch from home" },
+          ],
+        },
+        {
           id: "helpers",
           label: "Helpers",
           icon: "planet",
@@ -236,7 +263,7 @@
     footer: {
       label: "PIR®, all the ways around",
       groups: [
-        { label: "Explore", icon: "compass", items: ["portal", "porch", "changelog", "library", "ledger", "map", { id: "rss", label: "RSS feed", icon: "rss-simple", href: LOG + "/rss.xml" }] },
+        { label: "Explore", icon: "compass", items: ["portal", "porch", "changelog", "library", "ledger", "map", "convention", "galleries", { id: "rss", label: "RSS feed", icon: "rss-simple", href: LOG + "/rss.xml" }] },
         { label: "Helpers", icon: "planet", items: ["alex", "litcom", "techcom", "githubdesk", "prdesk", "catalyst", "alexandrina"] },
         { label: "Get involved", icon: "hand-heart", items: ["community", "contact", "donate", "service", { id: "guide", label: "Welcome guide", icon: "signpost", href: "#welcome", open: "guide" }] },
         { label: "About", icon: "info", items: ["roadmap", "sustainability", "home", "servicesite", "privacy", "github", "crisis"] },
@@ -430,6 +457,14 @@
       catalyst: {
         name: "C.A.T.A.L.Y.S.T.",
         what: "C.A.T.A.L.Y.S.T. is the helper fleet that tends PIR's sites and desks, with a person directing every action. This chalkboard introduces them.",
+      },
+      convention: {
+        name: "the PIR® Convention site",
+        what: "This is the Convention home of Psychedelics In Recovery™ – PIR®: the story of each gathering, the photo gallery, and what is coming next.",
+      },
+      gallery: {
+        name: "the PIR® Gallery",
+        what: "This is the fellowship's own gallery of Psychedelics In Recovery™ – PIR®: every album the fellowship makes, kept on its own ground.",
       },
     },
 

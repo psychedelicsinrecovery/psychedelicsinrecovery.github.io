@@ -1,0 +1,12 @@
+/* more-tree.css — the More panel as a small tree: parent labels, children offset.
+   Loaded on every suite page by org.js (which injects it next to itself). */
+.arr-nav-more > :not(.arr-nav-more-h) {
+  margin-left: 1.4rem;
+}
+.arr-nav-more-group > :not(.arr-nav-more-h) {
+  margin-left: 1.4rem;
+}
+.arr-nav-more [data-arr-more-k] {
+  border-left: 1px solid rgba(255, 255, 255, 0.12);
+  padding-left: 0.7rem;
+}
