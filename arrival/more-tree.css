@@ -64,10 +64,15 @@
   transform: rotate(90deg);
 }
 
-/* the side menu itself: outside the scroll wrapper, positioned by openFly() */
+/* the side menu itself: outside the scroll wrapper, positioned by openFly().
+   2026-10-16: the flyout was invisible on the live sites - the panel's own
+   overflow-y:auto (added 2026-10-15 when the desks landed) clipped anything
+   positioned outside the panel box, and the fly lives exactly there. The inner
+   .arr-nav-more-scroll already does the list scrolling, so the panel lets go,
+   and the fly rises above the sticky header. */
 .arr-nav-fly {
   position: absolute;
-  z-index: 30;
+  z-index: 9999;
   min-width: 15rem;
   max-width: 20rem;
   filter: drop-shadow(0 14px 34px rgba(0, 0, 0, 0.55));
@@ -81,10 +86,12 @@
 }
 
 /* 2026-10-15: with the twelve committee desks landing in the menu, the More panel
-   (and every dropdown that hosts a tree) must scroll, not clip, when its list grows. */
+   (and every dropdown that hosts a tree) must scroll, not clip, when its list grows.
+   2026-10-16: overflow goes back to visible - the inner scroll wrapper owns the
+   scrolling, and a clipping panel swallowed the flyout children whole. */
 .arr-nav-more {
   max-height: min(72vh, 36rem);
-  overflow-y: auto;
+  overflow: visible;
   overscroll-behavior: contain;
   scrollbar-width: thin;
 }
