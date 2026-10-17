@@ -302,3 +302,35 @@ html[data-contrast="more"] #starfield-canvas {
 html[data-contrast="more"] .orbit-map .halo {
   opacity: 0.18;
 }
+
+/* ── the concierge: section dividers inside the Helpdesks dropdown and the Menu's desks section
+   (drawn at runtime by arrival/concierge.js; styled here so both lights keep their contrast) ── */
+.arr-nav-sep {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.7rem 0.65rem 0.25rem;
+  pointer-events: none;
+  list-style: none;
+}
+.arr-nav-sep::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.16;
+}
+.arr-nav-sep-l {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted, var(--faint));
+  white-space: nowrap;
+}
+.arr-nav-sep-l .ph {
+  font-size: 1.25em;
+}
