@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en" data-arrival-site="portal">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A gratitude pledge — PIR® on GitHub</title>
+<meta name="description" content="Say thank you to Psychedelics In Recovery™ by signing a short gratitude pledge with a crypto wallet. No money is involved: nothing is sent and nothing is recorded, and anyone can verify a pledge&#x27;s signature.">
+<meta name="theme-color" content="#06050e">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="/favicon.png">
+<!-- Link previews (Discord, WhatsApp, iMessage, Telegram…): every URL absolute, a real 1200×630 JPEG,
+     drawn by the AstroLog's build (og/page/pledge.jpg) in PIR's night-sky look, with no counts. -->
+<link rel="canonical" href="https://psychedelicsinrecovery.github.io/pledge/">
+<meta property="og:site_name" content="PIR® on GitHub">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://psychedelicsinrecovery.github.io/pledge/">
+<meta property="og:title" content="A gratitude pledge — PIR® on GitHub">
+<meta property="og:description" content="Say thank you to Psychedelics In Recovery™ by signing a short gratitude pledge with a crypto wallet. No money is involved: nothing is sent and nothing is recorded, and anyone can verify a pledge&#x27;s signature.">
+<meta property="og:image" content="https://psychedelicsinrecovery.github.io/changelog-astro-public/og/page/pledge.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A gratitude pledge for PIR®, signed with a wallet. No money, nothing recorded, and no counts.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="A gratitude pledge — PIR® on GitHub">
+<meta name="twitter:description" content="Say thank you to Psychedelics In Recovery™ by signing a short gratitude pledge with a crypto wallet. No money is involved: nothing is sent and nothing is recorded, and anyone can verify a pledge&#x27;s signature.">
+<meta name="twitter:image" content="https://psychedelicsinrecovery.github.io/changelog-astro-public/og/page/pledge.jpg">
+<meta name="twitter:image:alt" content="A gratitude pledge for PIR®, signed with a wallet. No money, nothing recorded, and no counts.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400&family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/fill/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css">
+<!-- PIR's arrival kit (v1.4), served from /arrival/ on this site and shared with the AstroLog and the
+     desks: it applies the visitor's light, motion, contrast, text size and cursor choice before first
+     paint, and draws the navbar, footer and windows from org.js, so it loads here in <head>. The page body is the kit's <arrival-pledge>, from org.js: pledge. -->
+<link rel="stylesheet" href="/arrival/arrival.css">
+<link rel="stylesheet" href="/arrival/org.css">
+<script src="/arrival/org.js"></script>
+<script src="/arrival/arrival.js"></script>
+<!-- Shared PIR® design system (served by alex-desk-public) + the AstroLog layer (star chart, dock). -->
+<link rel="stylesheet" href="/alex-desk-public/assets/alex.css">
+<link rel="stylesheet" href="/changelog-astro-public/astrolog.css">
+<style>
+  .brand img{border-radius:9px}
+  #starfield-canvas{position:fixed;inset:0;z-index:-1;pointer-events:none}
+  .pir-page{padding-block:2.6rem 3.5rem}
+  .pir-page .crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:.3rem .5rem;margin:0 0 1.1rem;font:500 .8rem var(--mono);letter-spacing:.06em;color:var(--muted)}
+  .pir-page .crumbs a{display:inline-flex;align-items:center;gap:.3rem;color:var(--muted);text-decoration:none}
+  .pir-page .crumbs a:hover{color:var(--fg)}
+  .pir-page h1{margin:0 0 .8rem;font-size:clamp(2.2rem,6vw,3.4rem);line-height:1.05}
+  .pir-page .lede{max-width:44rem;margin:0 0 2rem;color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress" aria-hidden="true"></div>
+<canvas id="starfield-canvas" aria-hidden="true"></canvas>
+<!-- One row at every width: the brand, the kit's navbar (it folds into "More", then a Menu button below
+     1100px, rather than wrapping) and the kit's tools. -->
+<header class="top"><div class="wrap">
+  <a class="brand" href="/" aria-label="PIR® on GitHub, home"><img src="/favicon.svg" alt="" width="34" height="34"><span class="arr-brand-text">PIR® <small>on GitHub</small></span></a>
+  <arrival-nav current="pledge"></arrival-nav>
+  <arrival-controls></arrival-controls>
+</div></header>
+
+<main id="main">
+  <div class="wrap pir-page" style="max-width:900px">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/"><i class="ph ph-house" aria-hidden="true"></i>Hub</a><span aria-hidden="true">/</span><span aria-current="page">Gratitude pledge</span></nav>
+    <h1>A gratitude pledge</h1>
+    <p class="lede">If the fellowship has meant something to you, you can say so in writing, by signing a short pledge with a crypto wallet. It's a thank-you, not a gift: <strong>no money is involved</strong>, nothing is sent anywhere, and for now nothing is recorded. PIR® is self-supporting through its own members, in keeping with the 7th Tradition, and that doesn't change here.</p>
+    <!-- The pledge, its three steps, the "Gratitude tokens (coming)" and "aren't bots" cards and the
+         verify-a-signature tool (#verify-signature), all from org.js: pledge. arrival.js draws it;
+         pledge/pledge.js runs it, borrowing give/give.js's wallet layer (Reown AppKit, the shared
+         project). No counts, no addresses, nothing stored. -->
+    <arrival-pledge><noscript><p>Signing a pledge needs JavaScript and a crypto wallet. Everything else on these pages works without either.</p></noscript></arrival-pledge>
+  </div>
+</main>
+
+<footer><div class="wrap pir-foot">
+  <div><a class="brand" href="/" style="margin-bottom:.6rem"><img src="/favicon.svg" alt="" width="34" height="34">PIR®</a>
+    <span>Psychedelics In Recovery™ is a 501(&zwnj;c)(3) nonprofit and fellowship. Our primary purpose is to pursue recovery and help others do the same, as defined by the individual.</span>
+    <a class="tended" href="https://psychedelicsinrecovery.github.io/catalyst-desk-public/"><span class="cat-mark" aria-hidden="true"></span>Tended by <b>C.A.T.A.L.Y.S.T.</b>, PIR®'s helper fleet</a></div>
+  <!-- Every way around, in groups, an icon on each link (drawn by the kit from org.js: footer.groups). -->
+  <arrival-footer current="pledge"></arrival-footer>
+</div></footer>
+
+<nav class="dock" aria-label="Quick links"><div class="wrap">
+  <span class="mark">PIR®</span>
+  <a href="/"><i class="ph-fill ph-house" aria-hidden="true"></i><span class="lg">Entry portal</span><span class="sm">Hub</span></a>
+  <a href="https://psychedelicsinrecovery.github.io/changelog-astro-public/"><i class="ph-fill ph-door-open" aria-hidden="true"></i>Porch</a>
+  <a href="https://psychedelicsinrecovery.github.io/changelog-astro-public/changelog"><i class="ph-fill ph-clock-counter-clockwise" aria-hidden="true"></i>Changelog</a>
+  <a href="https://psychedelicsinrecovery.github.io/changelog-astro-public/library"><i class="ph-fill ph-books" aria-hidden="true"></i>Library</a>
+  <a href="https://psychedelicsinrecovery.github.io/map/"><i class="ph-fill ph-map-trifold" aria-hidden="true"></i>Map</a>
+  <a href="https://discord.gg/MyprTq8w95" data-arrival-open="community"><i class="ph-fill ph-users-three" aria-hidden="true"></i>Community</a>
+  <a class="end" href="https://www.psychedelicsinrecovery.org/contact/" data-arrival-open="contact"><i class="ph-fill ph-chat-circle-text" aria-hidden="true"></i><span class="lg">Reach out</span><span class="sm">Contact</span></a>
+</div></nav>
+
+<script src="/starfield.js" defer></script>
+<script src="/alex-desk-public/assets/alex.js" defer></script>
+</body>
+</html>

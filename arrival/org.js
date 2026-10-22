@@ -1,18 +1,4 @@
-/* Inject more-tree.css next to this file so every suite page gets the tree-style More panel */
-(function () {
-  try {
-    var sc = document.currentScript;
-    if (sc && sc.src && !document.querySelector('link[data-arr-more-tree]')) {
-      var l = document.createElement('link');
-      l.rel = 'stylesheet';
-      l.setAttribute('data-arr-more-tree', '');
-      l.href = sc.src.replace(/org\.js(?:\?.*)?$/, 'more-tree.css');
-      document.head.appendChild(l);
-    }
-  } catch (e) {}
-})();
-
-/* PIR®'s arrival config, read by arrival.js (kit v1.3). Shared by every PIR page that loads the kit:
+/* PIR®'s arrival config, read by arrival.js (kit v1.4.0, canonical and unchanged). Shared by every PIR page that loads the kit:
    the GitHub hub (this site: /, /donate/, /map/, the 404), the AstroLog and the desk portals (by
    full URL; the desks swap in their own nav and footer before arrival.js runs).
 
@@ -20,7 +6,13 @@
    the public CONTACTS.md in psychedelicsinrecovery/.github, and A.L.E.X.'s portal. People appear by
    first name and last initial, in keeping with PIR's anonymity traditions. Anything not published
    yet is marked as a placeholder rather than guessed. Strings shown in the welcome guide may hold
-   simple HTML. */
+   simple HTML.
+
+   Kit 1.4 (2026-10-22) replaced a local fork ("1.3.1": More-panel flyouts, more-tree.css and
+   concierge.js, which renamed and re-sorted the nav at runtime). What concierge.js patched in is
+   config now: the Foyers dropdown in two groups (Committees in the fellowship's engagement order,
+   then Infrastructure), the GSR Desk and BoardDesk's front door (board-desk-public) among the
+   Helpers, and the desk portals' grouped Helpdesks dropdown (alex-desk/site/build.py). */
 (function () {
   var ROOT = "https://psychedelicsinrecovery.github.io";
   var LOG = ROOT + "/changelog-astro-public";
@@ -35,6 +27,7 @@
   var WHATSAPP = SITE + "/whatsapp/";
   var CATALYST = ROOT + "/catalyst-desk-public";
   var ALEXANDRINA = "https://drasticstatic.github.io/alexandrina-public-preview/";
+  var REOWN = "00b6a1cd528ff580f1fd845ed08b0187"; // the shared Reown project (public client ID); see SUSTAINABILITY.md
   // The night sky's colors, from violet round through cyan and gold to rose. They light the guide's
   // star (eight steps, eight points) and ring the initials avatars.
   var SKY = ["#b48cff", "#8d7cff", "#6fe3ff", "#5ee6c4", "#a6e08a", "#f3c76b", "#ffa77d", "#ff8fb1"];
@@ -204,24 +197,39 @@
         { id: "ledger", label: "Ledger", icon: "scroll", href: LOG + "/ledger", priority: 2, note: "Every public change, in plain words" },
         { id: "map", label: "Map", icon: "map-trifold", href: LOG + "/map", hrefs: { portal: ROOT + "/map/" }, priority: 2, note: "Every place, with a picture of each" },
         {
-          id: "desks",
-          label: "Committees",
-          icon: "briefcase",
+          // The AstroLog's foyers: each committee's stream of minutes, then the infrastructure desks
+          // (not the *-desk-public helpdesk portals). Committees in the engagement order the
+          // fellowship reads them in (Littlebird's foyers pass, 2026-10-19).
+          id: "foyers",
+          label: "Foyers",
+          icon: "door-open",
           priority: 4,
-          note: "The nine committees' streams of minutes, then the three infrastructure desks - the AstroLog's changelog, not the *-desk-public helpdesk portals",
-          items: [
-            { id: "desk-gsr", label: "GSR Committee", icon: "users-three", href: LOG + "/changelog/gsr-com/", note: "General Service Representatives" },
-            { id: "desk-pr", label: "PR Committee", icon: "megaphone", href: LOG + "/changelog/pr-com/", note: "Public Relations minutes and media" },
-            { id: "desk-bod", label: "Board of Directors", icon: "gavel", href: LOG + "/changelog/bod/", note: "B.O.D. minutes, resolutions and governance" },
-            { id: "desk-ig", label: "Intergroup", icon: "users-four", href: LOG + "/changelog/intergroup/", note: "Intergroup minutes, with the Service Structure subcommittee" },
-            { id: "desk-litcom", label: "Lit Com", icon: "book-open-text", href: LOG + "/changelog/lit-com/", note: "Literature Committee minutes and tools" },
-            { id: "desk-pubs", label: "Publications", icon: "books", href: LOG + "/changelog/publications-com/", note: "Publications Committee minutes" },
-            { id: "desk-book", label: "Book Committee", icon: "book-bookmark", href: LOG + "/changelog/book-com/", note: "The book work, grown out of Lit Com" },
-            { id: "desk-news", label: "Newspaper", icon: "newspaper", href: LOG + "/changelog/newspaper-com/", note: "De Vine News, home of the fellowship's paper" },
-            { id: "desk-techcom", label: "Tech Com", icon: "wrench", href: LOG + "/changelog/tech-com/", note: "Minutes and infrastructure, Tech 2.0 to Tech 3.0" },
-            { id: "desk-wordpress", label: "WordPress sites", icon: "browsers", href: LOG + "/changelog/wordpress/", note: "Infrastructure desk: the main site and its subdomains" },
-            { id: "desk-brand", label: "GitHub home & brand", icon: "github-logo", href: LOG + "/changelog/brand-assets/", note: "Infrastructure desk: the hub, this AstroLog, logos and brand files" },
-            { id: "desk-alex", label: "A.L.E.X. & helpdesks", icon: "planet", href: LOG + "/changelog/alex-desk/", note: "Infrastructure desk: the Discord helper and the helpdesks" },
+          note: "The nine committees' streams of minutes, then the three infrastructure desks",
+          groups: [
+            {
+              label: "Committees",
+              icon: "users-three",
+              items: [
+                { id: "desk-gsr", label: "GSR Committee", icon: "users-three", href: LOG + "/changelog/gsr-com/", note: "General Service Representatives" },
+                { id: "desk-pr", label: "PR Committee", icon: "megaphone", href: LOG + "/changelog/pr-com/", note: "Public Relations minutes and media" },
+                { id: "desk-techcom", label: "Tech Com", icon: "wrench", href: LOG + "/changelog/tech-com/", note: "Minutes and infrastructure, Tech 2.0 to Tech 3.0" },
+                { id: "desk-litcom", label: "Lit Com", icon: "book-open-text", href: LOG + "/changelog/lit-com/", note: "Literature Committee minutes and tools" },
+                { id: "desk-news", label: "Newspaper", icon: "newspaper", href: LOG + "/changelog/newspaper-com/", note: "De Vine News, home of the fellowship's paper" },
+                { id: "desk-pubs", label: "Publications", icon: "books", href: LOG + "/changelog/publications-com/", note: "Publications Committee minutes" },
+                { id: "desk-book", label: "Book Committee", icon: "book-bookmark", href: LOG + "/changelog/book-com/", note: "The book work, grown out of Lit Com" },
+                { id: "desk-bod", label: "Board of Directors", icon: "gavel", href: LOG + "/changelog/bod/", note: "B.O.D. minutes, resolutions and governance" },
+                { id: "desk-ig", label: "Intergroup", icon: "users-four", href: LOG + "/changelog/intergroup/", note: "Intergroup minutes, with the Service Structure subcommittee" },
+              ],
+            },
+            {
+              label: "Infrastructure",
+              icon: "wrench",
+              items: [
+                { id: "desk-wordpress", label: "WordPress sites", icon: "browsers", href: LOG + "/changelog/wordpress/", note: "The main site and its subdomains" },
+                { id: "desk-brand", label: "GitHub home & brand", icon: "github-logo", href: LOG + "/changelog/brand-assets/", note: "The hub, this AstroLog, logos and brand files" },
+                { id: "desk-alex", label: "A.L.E.X. & helpdesks", icon: "planet", href: LOG + "/changelog/alex-desk/", note: "The Discord helper and the helpdesks" },
+              ],
+            },
           ],
         },
         {
@@ -238,18 +246,40 @@
           ],
         },
         {
+          // A.L.E.X.'s helpdesks, in the same engagement order and split as the Foyers, with the GSR
+          // Desk and BoardDesk's own front door (board-desk-public).
           id: "helpers",
           label: "Helpers",
           icon: "planet",
           priority: 2,
-          items: [
-            { id: "alex", label: "A.L.E.X.", icon: "planet", href: ALEX + "/", note: "PIR's Discord helper and its helpdesks" },
-            { id: "litcom", label: "LitCom desk", icon: "scroll", href: ROOT + "/litcom-desk-public/", note: "Literature requests, corrections and ideas" },
-            { id: "techcom", label: "TechCom desk", icon: "desktop", href: ROOT + "/techcom-desk-public/", note: "Websites, email, forms, Zoom and calendar" },
-            { id: "githubdesk", label: "GitHubDesk", icon: "github-logo", href: ROOT + "/github-desk-public/", note: "PIR's GitHub repos, Pages and access" },
-            { id: "prdesk", label: "PR Desk", icon: "megaphone", href: ROOT + "/pr-desk-public/", note: "Social, press, brand assets, De Vine News" },
-            { id: "catalyst", label: "C.A.T.A.L.Y.S.T.", icon: "sparkle", href: CATALYST + "/", note: "The helper fleet that tends the sites and desks" },
-            { id: "alexandrina", label: "Alexandrina", icon: "flame", href: ALEXANDRINA, note: "The engine A.L.E.X. runs on: a public preview" },
+          groups: [
+            {
+              label: "Committee desks",
+              icon: "users-three",
+              items: [
+                { id: "gsrdesk", label: "GSR Desk", icon: "users-three", href: ROOT + "/gsr-desk-public/", note: "Group reports, service positions, the fellowship's record" },
+                { id: "prdesk", label: "PR Desk", icon: "megaphone", href: ROOT + "/pr-desk-public/", note: "Social, press, brand assets, De Vine News" },
+                { id: "techcom", label: "TechCom desk", icon: "desktop", href: ROOT + "/techcom-desk-public/", note: "Websites, email, forms, Zoom and calendar" },
+                { id: "litcom", label: "LitCom desk", icon: "scroll", href: ROOT + "/litcom-desk-public/", note: "Literature requests, corrections and ideas" },
+                { id: "boarddesk", label: "BoardDesk", icon: "bank", href: ROOT + "/board-desk-public/", note: "Proposals and requests for PIR's Board" },
+              ],
+            },
+            {
+              label: "Infrastructure desks",
+              icon: "wrench",
+              items: [
+                { id: "alex", label: "A.L.E.X.", icon: "planet", href: ALEX + "/", note: "PIR's Discord helper, and the web desk" },
+                { id: "githubdesk", label: "GitHubDesk", icon: "github-logo", href: ROOT + "/github-desk-public/", note: "PIR's GitHub repos, Pages and access" },
+              ],
+            },
+            {
+              label: "Behind the desks",
+              icon: "sparkle",
+              items: [
+                { id: "catalyst", label: "C.A.T.A.L.Y.S.T.", icon: "sparkle", href: CATALYST + "/", note: "The helper fleet that tends the sites and desks" },
+                { id: "alexandrina", label: "Alexandrina", icon: "flame", href: ALEXANDRINA, note: "The engine A.L.E.X. runs on: a public preview" },
+              ],
+            },
           ],
         },
         {
@@ -261,6 +291,7 @@
             { id: "community", label: "Community", icon: "users-three", href: DISCORD, open: "community", note: "Where the fellowship talks" },
             { id: "contact", label: "Reach out", icon: "envelope-simple", href: SITE + "/contact/", open: "contact", note: "Every way to reach PIR, in one place" },
             { id: "donate", label: "Donate", icon: "heart", href: ROOT + "/donate/", note: "Giving to PIR, and thanks by name" },
+            { id: "pledge", label: "Gratitude pledge", icon: "handshake", href: ROOT + "/pledge/", note: "Signed with a wallet. No money: nothing sent" },
             { id: "service", label: "Get into service", icon: "hand-heart", href: SITE + "/service/", note: "Ways to lend a hand" },
           ],
         },
@@ -272,6 +303,8 @@
           items: [
             { id: "roadmap", label: "Roadmap", icon: "path", href: LOG + "/roadmap", note: "Where these pages are headed" },
             { id: "sustainability", label: "Sustainability", icon: "plant", href: LOG + "/sustainability", note: "What it takes to keep them running" },
+            { id: "proposals", label: "Proposals", icon: "lightbulb", href: LOG + "/proposals", note: "Ideas before the Board and committees" },
+            { id: "resources", label: "Resources", icon: "books", href: LOG + "/resources", note: "By-laws, contacts, the service structure" },
             { id: "home", label: "psychedelicsinrecovery.org", icon: "globe", href: SITE, note: "PIR's main site: meetings, history, service" },
             { id: "servicesite", label: "Service site", icon: "buildings", href: SERVICE + "/", note: "The Board, committees and the service calendar" },
             { id: "privacy", label: "Privacy policy", icon: "shield-check", href: PRIVACY, note: "What PIR collects, and why" },
@@ -285,9 +318,9 @@
       label: "PIR®, all the ways around",
       groups: [
         { label: "Explore", icon: "compass", items: ["portal", "porch", "changelog", "library", "ledger", "map", "convention", "galleries", { id: "rss", label: "RSS feed", icon: "rss-simple", href: LOG + "/rss.xml" }] },
-        { label: "Helpers", icon: "planet", items: ["alex", "litcom", "techcom", "githubdesk", "prdesk", "catalyst", "alexandrina"] },
-        { label: "Get involved", icon: "hand-heart", items: ["community", "contact", "donate", "service", { id: "guide", label: "Welcome guide", icon: "signpost", href: "#welcome", open: "guide" }] },
-        { label: "About", icon: "info", items: ["roadmap", "sustainability", "home", "servicesite", "privacy", "github", "crisis"] },
+        { label: "Helpers", icon: "planet", items: ["gsrdesk", "prdesk", "techcom", "litcom", "boarddesk", "alex", "githubdesk", "catalyst", "alexandrina"] },
+        { label: "Get involved", icon: "hand-heart", items: ["community", "contact", "donate", "pledge", "service", { id: "guide", label: "Welcome guide", icon: "signpost", href: "#welcome", open: "guide" }] },
+        { label: "About", icon: "info", items: ["roadmap", "sustainability", "proposals", "resources", "home", "servicesite", "privacy", "github", "crisis"] },
       ],
       note: "Code here is MIT licensed and the words are CC BY-SA 4.0. PIR® and Psychedelics In Recovery™ are marks of Psychedelics In Recovery, a 501(&zwnj;c)(3) nonprofit.",
     },
@@ -329,7 +362,7 @@
         },
       ],
       fine:
-        'Need a committee? A.L.E.X.\'s <a href="' + ALEX + '/">helpdesks</a> open a private ticket with LitCom, TechCom, GitHub, PR or the Board, in Discord or on the web. Need help right now? <a href="' + CRISIS + '">Crisis resources</a>, any time.',
+        'Need a committee? A.L.E.X.\'s <a href="' + ALEX + '/">helpdesks</a> open a private ticket with LitCom, TechCom, GitHub, PR or the Board, in Discord or on the web; the <a href="' + ROOT + '/gsr-desk-public/">GSR Desk</a> takes group reports. Need help right now? <a href="' + CRISIS + '">Crisis resources</a>, any time.',
     },
 
     // ── where the fellowship talks: Discord (and its committee channels), WhatsApp threads, and a
@@ -407,6 +440,33 @@
     // placeholder disclaimer below. Don't switch it on without that wording.
     give: { enabled: false },
 
+    // ── kit 1.4 ────────────────────────────────────────────────────────────────────────────────
+    // The dock (the strip at the bottom of the hub and the AstroLog) shows a fade and a chevron when
+    // it scrolls on a phone. PIR's ".dock .wrap" is matched by default.
+    dock: { scroll: true },
+
+    // A gratitude pledge (/pledge/): a thank-you signed with a wallet. NO MONEY IS INVOLVED: PIR is
+    // self-supporting under its traditions and declines outside contributions, so the pledge asks for
+    // nothing, sends nothing and records nothing (an EIP-191 message signature, checked in the tab and
+    // forgotten; no counts). The wording below is a first draft for PIR's trusted servants to refine.
+    // Wallet connect uses the shared Reown project (the same one the other orgs use; PIR's origin is
+    // on its allowlist). give stays off.
+    pledge: {
+      href: ROOT + "/pledge/",
+      title: "A gratitude pledge",
+      intro:
+        "Say thank you to the fellowship, in writing, by signing a short pledge with a crypto wallet. <strong>No money is involved:</strong> PIR® is self-supporting under its traditions and declines outside contributions, so this pledge asks for nothing and sends nothing. Signing is free, and for now nothing is recorded.",
+      text: "I'm grateful for Psychedelics In Recovery and the people in it. I pledge to support the fellowship with my presence and my service, and to honor its traditions of anonymity and self-support.",
+      note:
+        'A pledge here is a thank-you, not a donation: no money, no tokens, nothing for sale. Its wording is a first draft, open to the fellowship\'s suggestions through the <a href="' + ROOT + '/techcom-desk-public/">TechCom desk</a>.',
+      reownProjectId: REOWN,
+      tokens: {
+        title: "Gratitude tokens",
+        text: "Later, a pledge may come with a token of gratitude, for anyone who'd like one. It would be soulbound: it stays in the wallet it was given to and can't be sold, sent on or traded. It isn't money and can't be bought; it's a thank-you. It comes from the gratitude-token project Christopher W is building, which is still being tested, and PIR® hasn't decided anything about it. No dates.",
+      },
+      words: { readText: "It's above. Signing it says you're grateful and agree with it, and nothing else about you." },
+    },
+
     donate: {
       give: [
         {
@@ -429,6 +489,14 @@
       },
       crypto: {
         text: "Giving from a crypto wallet is planned for this page: one button for browser wallets, phone wallets and email sign-in. It isn't open yet.",
+      },
+      // Receipts and taxes (kit 1.4). The status is PIR's own published words: the footer of
+      // psychedelicsinrecovery.org and of the service site reads "Registered 501(c)(3) Organization,
+      // EIN 92-1548474", and the by-laws organize PIR under section 501(c)(3). Whether a gift is
+      // deductible isn't stated there, so that line keeps the kit's claim-nothing default.
+      tax: {
+        status:
+          'A registered 501(c)(3) organization, EIN 92-1548474, as the footer of <a href="' + SITE + '/">psychedelicsinrecovery.org</a> states (see also the <a href="' + SITE + '/by-laws/">by-laws</a>).',
       },
     },
 
@@ -534,6 +602,11 @@
         { t: "TechCom desk", k: "desk", i: "desktop", h: ROOT + "/techcom-desk-public/", x: "tech committee helpdesk website" },
         { t: "GitHubDesk", k: "desk", i: "github-logo", h: ROOT + "/github-desk-public/", x: "github access helpdesk" },
         { t: "PR desk", k: "desk", i: "megaphone", h: ROOT + "/pr-desk-public/", x: "public relations helpdesk" },
+        { t: "GSR Desk", k: "desk", i: "users-three", h: ROOT + "/gsr-desk-public/", x: "gsr general service representatives group reports monthly form helpdesk" },
+        { t: "BoardDesk", k: "desk", i: "bank", h: ROOT + "/board-desk-public/", x: "board of directors bod proposals governance helpdesk" },
+        { t: "A gratitude pledge", k: "page", i: "handshake", h: ROOT + "/pledge/", x: "pledge gratitude thank you sign wallet signature no money" },
+        { t: "Proposals", k: "page", i: "lightbulb", h: LOG + "/proposals", x: "proposal board committees siteground renewal decide" },
+        { t: "Resources: the standing documents", k: "page", i: "books", h: LOG + "/resources", x: "resource shelf bylaws by-laws contacts structure" },
         { t: "C.A.T.A.L.Y.S.T.", k: "helper", i: "sparkle", h: ROOT + "/catalyst-desk-public/", x: "catalyst fleet helpers agents chalkboard" },
         { t: "Copy /ask", k: "A.L.E.X. command", i: "copy", run: copyCommand("/ask"), x: "discord command question" },
         { t: "Copy /techcom", k: "A.L.E.X. command", i: "copy", run: copyCommand("/techcom"), x: "discord command ticket tech" },
