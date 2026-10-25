@@ -78,6 +78,7 @@ Nothing's live yet on the technical side. Watch this org — the trip's just get
 
 ## 🤝 Community health
 
+- [`ONBOARDING.md`](https://github.com/psychedelicsinrecovery/.github/blob/main/ONBOARDING.md): **joined the organization? start here**: two-factor login, connecting your AI helper, and how we work
 - [`CONTRIBUTING.md`](https://github.com/psychedelicsinrecovery/.github/blob/main/CONTRIBUTING.md)
 - [`SECURITY.md`](https://github.com/psychedelicsinrecovery/.github/blob/main/SECURITY.md)
 - [`SOCIAL-PREVIEWS.md`](https://github.com/psychedelicsinrecovery/.github/blob/main/SOCIAL-PREVIEWS.md): how to refresh link previews in Telegram, LinkedIn, Facebook and more, and which pages have their own share image
