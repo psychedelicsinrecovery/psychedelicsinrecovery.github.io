@@ -4,6 +4,11 @@
 
 <div align="center">
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/psychedelicsinrecovery/.github/main/profile/assets/banner-dark.svg">
+  <img alt="PIR®, Psychedelics In Recovery™: a night sky slowly breathing toward daybreak. A safe, sacred space to integrate and discuss the role of psychedelics in your recovery journey." src="https://raw.githubusercontent.com/psychedelicsinrecovery/.github/main/profile/assets/banner-light.svg" width="100%">
+</picture>
+
 # 🌵 PIR® — Psychedelics In Recovery™
 
 *A safe, sacred space to integrate and discuss the role of psychedelics in your recovery journey*
