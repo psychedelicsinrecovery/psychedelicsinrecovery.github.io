@@ -6,7 +6,7 @@
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/psychedelicsinrecovery/.github/main/profile/assets/banner-dark.svg">
-  <img alt="PIR®, Psychedelics In Recovery™: a night sky breathing toward daybreak, where constellations draw themselves in: the PIR eye traced in stars, the Three Legacies and the Fellowship's circle of twelve. A safe, sacred space to integrate and discuss the role of psychedelics in your recovery journey." src="https://raw.githubusercontent.com/psychedelicsinrecovery/.github/main/profile/assets/banner-light.svg" width="100%">
+  <img alt="PIR®, Psychedelics In Recovery™: a night sky breathing toward daybreak, where constellations draw themselves in: the PIR eye traced in stars, the Three Legacies and the Fellowship's circle of twelve, joined by faint threads like mycelium along which soft pulses of light travel from star to star. A safe, sacred space to integrate and discuss the role of psychedelics in your recovery journey." src="https://raw.githubusercontent.com/psychedelicsinrecovery/.github/main/profile/assets/banner-light.svg" width="100%">
 </picture>
 
 # 🌵 PIR® — Psychedelics In Recovery™
