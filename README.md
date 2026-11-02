@@ -9,7 +9,7 @@
   <img alt="PIR®, Psychedelics In Recovery™: a night sky breathing toward daybreak, where constellations draw themselves in: the PIR eye traced in stars, the Three Legacies and the Fellowship's circle of twelve, joined by faint threads like mycelium along which soft pulses of light travel from star to star. A safe, sacred space to integrate and discuss the role of psychedelics in your recovery journey." src="https://raw.githubusercontent.com/psychedelicsinrecovery/.github/main/profile/assets/banner-light.svg" width="100%">
 </picture>
 
-# 🌵 PIR® — Psychedelics In Recovery™
+# PIR® — Psychedelics In Recovery™
 
 *A safe, sacred space to integrate and discuss the role of psychedelics in your recovery journey*
 
@@ -26,77 +26,82 @@
 
 ---
 
-🌵 PIR® — Psychedelics In Recovery™ — is a registered 501(c)(3) nonprofit organization and unincorporated
+PIR® — Psychedelics In Recovery™ — is a registered 501(c)(3) nonprofit organization and unincorporated
 Fellowship of supporting people from all 12-step programs and other paths of recovery who share our
 experience, strength and hope with each other who also have an interest in psychedelics and/or plant
 medicines as an aid to our recovery — a space where entheogens, 12-step principles, recovery from
-addictive behaviors, and harm-reduction practices sit together rather than in opposition. 🙏
+addictive behaviors, and harm-reduction practices sit together rather than in opposition.
 
 *Our primary purpose is to pursue recovery and help others do the same, as defined by the individual.
 The only requirement for membership is a desire to recover from our addictive behaviors and/or an interest
 in psychedelics as an aid to our process of recovery.*
 
-## 🗺️ What lives here
+## <img src="https://raw.githubusercontent.com/psychedelicsinrecovery/.github/main/profile/assets/icons/map.svg" width="24" height="24" alt=""> What lives here
 
-This organization's GitHub presence is early — most of PIR®'s actual work happens at
-[psychedelicsinrecovery.org](https://www.psychedelicsinrecovery.org) (WordPress-hosted) and through
-in-person and virtual community meetings. This space exists for the technical side of that work as it
-grows: site tooling, documentation, and — eventually — any code the community needs in the open. ✨
+Most of PIR®'s work happens at [psychedelicsinrecovery.org](https://www.psychedelicsinrecovery.org) and in its in-person and
+virtual meetings. This GitHub space holds the service side of that work: the sites' tooling, the committees' desks, and the
+written way PIR® proposes, decides and does things, so anyone in service (and the AI helper beside them) can follow along.
 
-## 🚧 In the works — beyond the WhatsApp thread
+| | Start here | What you will find |
+|---|---|---|
+| <img src="https://raw.githubusercontent.com/psychedelicsinrecovery/.github/main/profile/assets/icons/presentation.svg" width="20" height="20" alt=""> | **[Welcome deck](https://github.com/psychedelicsinrecovery/.github/blob/main/decks/welcome.marp.pdf)** ([HTML](https://github.com/psychedelicsinrecovery/.github/blob/main/decks/welcome.marp.html), [markdown](https://github.com/psychedelicsinrecovery/.github/blob/main/decks/welcome.marp.md)) | seven stops from "I have no GitHub account" to "I read, I answer, and my helper reads with me", anonymity first |
+| <img src="https://raw.githubusercontent.com/psychedelicsinrecovery/.github/main/profile/assets/icons/user-plus.svg" width="20" height="20" alt=""> | **SOP-COM-001** *New to GitHub: your first hour* ([the family's public copy](https://github.com/drasticstatic/my-template/blob/main/sop-template/repo/COM/SOP-COM-001-new-to-github-your-first-hour.md); PIR®'s copy in the [procedures](https://github.com/psychedelicsinrecovery/ops-standard-operating-procedures/blob/main/COM/SOP-COM-001-new-to-github-your-first-hour.md), members) | your own account and password, two-factor sign-in, the invitation, five words, the reading room, a helper |
+| <img src="https://raw.githubusercontent.com/psychedelicsinrecovery/.github/main/profile/assets/icons/globe.svg" width="20" height="20" alt=""> | **[The public reading room](https://psychedelicsinrecovery.github.io/reading-room-public/)** | one front door in your browser: what anyone may read, and the way in for members |
+| <img src="https://raw.githubusercontent.com/psychedelicsinrecovery/.github/main/profile/assets/icons/door-open.svg" width="20" height="20" alt=""> | **[The members' reading room](https://github.com/psychedelicsinrecovery/reading-room)** (sign in; a 404 means "not a reader yet") | proposals, procedures and decks while they are drafts, each as a PDF |
+| <img src="https://raw.githubusercontent.com/psychedelicsinrecovery/.github/main/profile/assets/icons/scroll-text.svg" width="20" height="20" alt=""> | **Procedures**: [public](https://github.com/psychedelicsinrecovery/ops-standard-operating-procedures-public) · [members](https://github.com/psychedelicsinrecovery/ops-standard-operating-procedures) | *this is how we do it now*: standard operating procedures, each with a PDF |
+| <img src="https://raw.githubusercontent.com/psychedelicsinrecovery/.github/main/profile/assets/icons/book-open.svg" width="20" height="20" alt=""> | **[Proposals](https://github.com/psychedelicsinrecovery/proposals)** (members) | *should we?* one folder, one page, a PDF beside it, on the way to the Board |
+| <img src="https://raw.githubusercontent.com/psychedelicsinrecovery/.github/main/profile/assets/icons/git-pull-request.svg" width="20" height="20" alt=""> | **[Gitmoji](https://github.com/drasticstatic/my-template/blob/main/GITMOJI.md)** | every commit subject starts with one gitmoji and a type, `:memo: docs(scope): subject` |
 
-Right now, LitCom and TechCom run on WhatsApp threads and Zoom calls — which works, but it's not
-where anyone can *see* what's cooking, or how to jump in. 🍄 We're dreaming up something with more
-color: two portals that are equal parts help-desk, open kitchen, and open door —
+```mermaid
+flowchart LR
+  N["New to service"] --> D["Welcome deck"]
+  D --> C["SOP-COM-001<br/>your first hour"]
+  C --> P["Public reading room"]
+  P -->|"/github in Discord:<br/>reading room, please"| M["Members' reading room"]
+  M --> R["Proposals and procedures"]
+```
 
-- 🌈 **A living status board** — what LitCom and TechCom are actually working on right now, out
-  where the whole community can watch it unfold instead of scrolling back through chat history.
-- 🎫 **A real ticket system** — report a site issue, propose a piece of content, ask a question —
-  without needing to know a single person's name or catch anyone at the right moment.
-- 🌱 **A call to service** — because the deepest version of this isn't a form, it's an invitation.
-  If reading this makes you want to get your hands dirty, don't wait for the portal —
-  **[reach out through PIR®'s service page →](https://www.psychedelicsinrecovery.org/service/)**
-  today.
+To ask for the members' room, type `/github` in [PIR®'s Discord](https://discord.gg/MyprTq8w95) or use the
+[web helpdesk](https://psychedelicsinrecovery.github.io/alex-desk-public/portal.html) and say "reading room, please".
+Decisions are PIR®'s own: committees for their service, the Board for PIR®'s money, name and legal standing; group
+conscience and the Traditions first, each of us guided by a Higher Power as we understand it.
 
-Nothing's live yet on the technical side. Watch this org — the trip's just getting started. 🌀
+## <img src="https://raw.githubusercontent.com/psychedelicsinrecovery/.github/main/profile/assets/icons/sprout.svg" width="24" height="24" alt=""> In the works: beyond the WhatsApp thread
 
-## 📊 Rabbit trails
+LitCom and TechCom have run on WhatsApp threads and Zoom calls, which works, but it is not where anyone can *see* what
+is cooking or how to jump in. The desks growing here are equal parts help desk, open kitchen and open door:
 
-- [📇 Contacts & structure →](https://github.com/psychedelicsinrecovery/.github/blob/main/CONTACTS.md) —
-  who serves where, committee mailboxes, subdomains, and how to request GitHub access for your
-  service role.
+- <img src="https://raw.githubusercontent.com/psychedelicsinrecovery/.github/main/profile/assets/icons/route.svg" width="16" height="16" alt=""> **A living status board**: what LitCom and TechCom are working on now, out where the whole community can watch it unfold.
+- <img src="https://raw.githubusercontent.com/psychedelicsinrecovery/.github/main/profile/assets/icons/file-text.svg" width="16" height="16" alt=""> **A real ticket system**: report a site issue, propose a piece of content, ask a question, without needing to know a single person's name.
+- <img src="https://raw.githubusercontent.com/psychedelicsinrecovery/.github/main/profile/assets/icons/hand-heart.svg" width="16" height="16" alt=""> **A call to service**: the deepest version of this is not a form, it is an invitation. **[Reach out through PIR®'s service page](https://www.psychedelicsinrecovery.org/service/)** today.
 
-- [🛡️ Privacy policy →](https://github.com/psychedelicsinrecovery/.github/blob/main/privacy-policy.md) —
-  one plain-language policy for both websites, Discord, and GitHub.
+## <img src="https://raw.githubusercontent.com/psychedelicsinrecovery/.github/main/profile/assets/icons/compass.svg" width="24" height="24" alt=""> Rabbit trails
 
-- [🏠 Org root page →](https://psychedelicsinrecovery.github.io) — where the org's GitHub Pages
-  presence lives.
+- <img src="https://raw.githubusercontent.com/psychedelicsinrecovery/.github/main/profile/assets/icons/users.svg" width="16" height="16" alt=""> [Contacts & structure](https://github.com/psychedelicsinrecovery/.github/blob/main/CONTACTS.md): who serves where, committee mailboxes, subdomains, and how to request GitHub access for your service role.
+- <img src="https://raw.githubusercontent.com/psychedelicsinrecovery/.github/main/profile/assets/icons/shield-check.svg" width="16" height="16" alt=""> [Privacy policy](https://github.com/psychedelicsinrecovery/.github/blob/main/privacy-policy.md): one plain-language policy for both websites, Discord and GitHub.
+- <img src="https://raw.githubusercontent.com/psychedelicsinrecovery/.github/main/profile/assets/icons/globe.svg" width="16" height="16" alt=""> [Org root page](https://psychedelicsinrecovery.github.io): where the org's GitHub Pages presence lives.
+- <img src="https://raw.githubusercontent.com/psychedelicsinrecovery/.github/main/profile/assets/icons/history.svg" width="16" height="16" alt=""> [Changelog](https://psychedelicsinrecovery.github.io/changelog-astro-public/changelog): a running, plain-language record of what has shipped.
+- <img src="https://raw.githubusercontent.com/psychedelicsinrecovery/.github/main/profile/assets/icons/book-marked.svg" width="16" height="16" alt=""> [Library](https://psychedelicsinrecovery.github.io/changelog-astro-public/library): the deeper technical write-ups behind it.
+- <img src="https://raw.githubusercontent.com/psychedelicsinrecovery/.github/main/profile/assets/icons/newspaper.svg" width="16" height="16" alt=""> [PIR® Devine News Dashboard](https://drasticstatic.github.io/pir-devine-news-public/dashboard): a behind-the-scenes look at the newsletter pipeline.
 
-- [🕰️ Changelog →](https://psychedelicsinrecovery.github.io/changelog-astro-public/changelog) —
-  a running, plain-language record of what's actually shipped.
+## <img src="https://raw.githubusercontent.com/psychedelicsinrecovery/.github/main/profile/assets/icons/heart.svg" width="24" height="24" alt=""> Community health
 
-- [📚 Library →](https://psychedelicsinrecovery.github.io/changelog-astro-public/library) — the
-  deeper technical write-ups behind it, for anyone who wants to understand how things really work.
+- <img src="https://raw.githubusercontent.com/psychedelicsinrecovery/.github/main/profile/assets/icons/user-plus.svg" width="16" height="16" alt=""> [`ONBOARDING.md`](https://github.com/psychedelicsinrecovery/.github/blob/main/ONBOARDING.md): **joined the organization? start here**: two-factor login, connecting your AI helper, and how we work
+- <img src="https://raw.githubusercontent.com/psychedelicsinrecovery/.github/main/profile/assets/icons/git-pull-request.svg" width="16" height="16" alt=""> [`CONTRIBUTING.md`](https://github.com/psychedelicsinrecovery/.github/blob/main/CONTRIBUTING.md): how to propose a change, and the [Gitmoji](https://github.com/drasticstatic/my-template/blob/main/GITMOJI.md) commit subjects
+- <img src="https://raw.githubusercontent.com/psychedelicsinrecovery/.github/main/profile/assets/icons/lock.svg" width="16" height="16" alt=""> [`SECURITY.md`](https://github.com/psychedelicsinrecovery/.github/blob/main/SECURITY.md)
+- <img src="https://raw.githubusercontent.com/psychedelicsinrecovery/.github/main/profile/assets/icons/sparkles.svg" width="16" height="16" alt=""> [`SOCIAL-PREVIEWS.md`](https://github.com/psychedelicsinrecovery/.github/blob/main/SOCIAL-PREVIEWS.md): how to refresh link previews in Telegram, LinkedIn, Facebook and more, and which pages have their own share image
 
-- [📰 PIR® Devine News Dashboard →](https://drasticstatic.github.io/pir-devine-news-public/dashboard) —
-  a behind-the-scenes look at the newsletter pipeline.
+---
 
-## 🤝 Community health
-
-- [`ONBOARDING.md`](https://github.com/psychedelicsinrecovery/.github/blob/main/ONBOARDING.md): **joined the organization? start here**: two-factor login, connecting your AI helper, and how we work
-- [`CONTRIBUTING.md`](https://github.com/psychedelicsinrecovery/.github/blob/main/CONTRIBUTING.md)
-- [`SECURITY.md`](https://github.com/psychedelicsinrecovery/.github/blob/main/SECURITY.md)
-- [`SOCIAL-PREVIEWS.md`](https://github.com/psychedelicsinrecovery/.github/blob/main/SOCIAL-PREVIEWS.md): how to refresh link previews in Telegram, LinkedIn, Facebook and more, and which pages have their own share image
+If you found this org looking for the community itself, [our homepage](https://www.psychedelicsinrecovery.org)
+is the right place to start. Or hop straight to:
+- <img src="https://raw.githubusercontent.com/psychedelicsinrecovery/.github/main/profile/assets/icons/wrench.svg" width="16" height="16" alt=""> [More resources](https://www.psychedelicsinrecovery.org/resources/)
+- <img src="https://raw.githubusercontent.com/psychedelicsinrecovery/.github/main/profile/assets/icons/mail.svg" width="16" height="16" alt=""> [Contact PIR®](https://www.psychedelicsinrecovery.org/contact/)
+- <img src="https://raw.githubusercontent.com/psychedelicsinrecovery/.github/main/profile/assets/icons/heart.svg" width="16" height="16" alt=""> [Donate to PIR®](https://www.psychedelicsinrecovery.org/7th-tradition/)
 
 ---
 
-If you found this org looking for the community itself, [Our Homepage](https://www.psychedelicsinrecovery.org)
-above is the right place to start. Or hop straight to:
-- [🧰 More Resources →](https://www.psychedelicsinrecovery.org/resources/)
-- [💌 Contact PIR® →](https://www.psychedelicsinrecovery.org/contact/)
-- [🩸 Donate to PIR® →](https://www.psychedelicsinrecovery.org/7th-tradition/)
-
----
+<sub>Icons: [Lucide](https://lucide.dev) (ISC).</sub>
 
 <div><sub>
 Our members either have had prior experience with, or are interested in, integrating the intentional use of psychedelics and/or plant medicines into our spiritually-oriented program. Psychedelics In Recovery™ is not affiliated with any sect, denomination, politics, organization or institution; does not wish to engage in any controversy; neither endorses nor opposes any causes. We do not sell or promote the use of any substances. PIR® provides a safe space in which we can openly discuss the role of psychedelics in our individual recovery journeys.</sub>
@@ -106,12 +111,12 @@ Our members either have had prior experience with, or are interested in, integra
 <br>
 <div align="center">
 <sub>
-🌵 This profile is still finding its shape, same as any good trip — nothing here is fixed in stone.
-Spot something that could be truer, warmer, or just better? Open an issue and help it grow. 🦋
+This profile is still finding its shape, same as any good trip: nothing here is fixed in stone.
+Spot something that could be truer, warmer, or just better? Open an issue and help it grow.
 </sub>
 </div>
 
-## 📄 License
-- 💻 **Code:** MIT, see [`LICENSE`](https://github.com/psychedelicsinrecovery/.github/blob/main/LICENSE)
-- 📝 **Written content** (docs, changelog and library prose, READMEs): CC BY-SA 4.0, see [`LICENSE-CONTENT`](https://github.com/psychedelicsinrecovery/.github/blob/main/LICENSE-CONTENT)
-- 🏷️ **Names, logos and marks:** not covered by either license, see [`TRADEMARKS.md`](https://github.com/psychedelicsinrecovery/.github/blob/main/TRADEMARKS.md)
+## <img src="https://raw.githubusercontent.com/psychedelicsinrecovery/.github/main/profile/assets/icons/scale.svg" width="24" height="24" alt=""> License
+- **Code:** MIT, see [`LICENSE`](https://github.com/psychedelicsinrecovery/.github/blob/main/LICENSE)
+- **Written content** (docs, changelog and library prose, READMEs): CC BY-SA 4.0, see [`LICENSE-CONTENT`](https://github.com/psychedelicsinrecovery/.github/blob/main/LICENSE-CONTENT)
+- **Names, logos and marks:** not covered by either license, see [`TRADEMARKS.md`](https://github.com/psychedelicsinrecovery/.github/blob/main/TRADEMARKS.md)
