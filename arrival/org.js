@@ -27,6 +27,7 @@
   var WHATSAPP = SITE + "/whatsapp/";
   var CATALYST = ROOT + "/catalyst-desk-public";
   var ALEXANDRINA = "https://drasticstatic.github.io/alexandrina-public-preview/";
+  var READING = ROOT + "/reading-room-public/"; // the reading room's public lane: proposals, procedures and decks (2026-10-31)
   var REOWN = "00b6a1cd528ff580f1fd845ed08b0187"; // the shared Reown project (public client ID); see SUSTAINABILITY.md
   // The night sky's colors, from violet round through cyan and gold to rose. They light the guide's
   // star (eight steps, eight points) and ring the initials avatars.
@@ -304,6 +305,7 @@
             { id: "roadmap", label: "Roadmap", icon: "path", href: LOG + "/roadmap", note: "Where these pages are headed" },
             { id: "sustainability", label: "Sustainability", icon: "plant", href: LOG + "/sustainability", note: "What it takes to keep them running" },
             { id: "proposals", label: "Proposals", icon: "lightbulb", href: LOG + "/proposals", note: "Ideas before the Board and committees" },
+            { id: "readingroom", label: "Proposals, procedures & decks", icon: "book-open-text", href: READING, note: "The reading room: what anyone may read, and the way in for members" },
             { id: "resources", label: "Resources", icon: "books", href: LOG + "/resources", note: "By-laws, contacts, the service structure" },
             { id: "home", label: "psychedelicsinrecovery.org", icon: "globe", href: SITE, note: "PIR's main site: meetings, history, service" },
             { id: "servicesite", label: "Service site", icon: "buildings", href: SERVICE + "/", note: "The Board, committees and the service calendar" },
@@ -320,7 +322,7 @@
         { label: "Explore", icon: "compass", items: ["portal", "porch", "changelog", "library", "ledger", "map", "convention", "galleries", { id: "rss", label: "RSS feed", icon: "rss-simple", href: LOG + "/rss.xml" }] },
         { label: "Helpers", icon: "planet", items: ["gsrdesk", "prdesk", "techcom", "litcom", "boarddesk", "alex", "githubdesk", "catalyst", "alexandrina"] },
         { label: "Get involved", icon: "hand-heart", items: ["community", "contact", "donate", "pledge", "service", { id: "guide", label: "Welcome guide", icon: "signpost", href: "#welcome", open: "guide" }] },
-        { label: "About", icon: "info", items: ["roadmap", "sustainability", "proposals", "resources", "home", "servicesite", "privacy", "github", "crisis"] },
+        { label: "About", icon: "info", items: ["roadmap", "sustainability", "proposals", "readingroom", "resources", "home", "servicesite", "privacy", "github", "crisis"] },
       ],
       note: "Code here is MIT licensed and the words are CC BY-SA 4.0. PIR® and Psychedelics In Recovery™ are marks of Psychedelics In Recovery, a 501(&zwnj;c)(3) nonprofit.",
     },
@@ -606,6 +608,7 @@
         { t: "BoardDesk", k: "desk", i: "bank", h: ROOT + "/board-desk-public/", x: "board of directors bod proposals governance helpdesk" },
         { t: "A gratitude pledge", k: "page", i: "handshake", h: ROOT + "/pledge/", x: "pledge gratitude thank you sign wallet signature no money" },
         { t: "Proposals", k: "page", i: "lightbulb", h: LOG + "/proposals", x: "proposal board committees siteground renewal decide" },
+        { t: "Proposals, procedures & decks", k: "page", i: "book-open-text", h: READING, x: "reading room proposals procedures sop standard operating decks slides welcome members access" },
         { t: "Resources: the standing documents", k: "page", i: "books", h: LOG + "/resources", x: "resource shelf bylaws by-laws contacts structure" },
         { t: "C.A.T.A.L.Y.S.T.", k: "helper", i: "sparkle", h: ROOT + "/catalyst-desk-public/", x: "catalyst fleet helpers agents chalkboard" },
         { t: "Copy /ask", k: "A.L.E.X. command", i: "copy", run: copyCommand("/ask"), x: "discord command question" },
@@ -741,6 +744,8 @@
         "What it takes to keep them running": "Lo que hace falta para que sigan funcionando",
         "Proposals": "Propuestas",
         "Ideas before the Board and committees": "Ideas ante la Junta y los comités",
+        "Proposals, procedures & decks": "Propuestas, procedimientos y presentaciones",
+        "The reading room: what anyone may read, and the way in for members": "La sala de lectura: lo que cualquiera puede leer, y la entrada para los miembros",
         "Resources": "Recursos",
         "By-laws, contacts, the service structure": "Estatutos, contactos, la estructura de servicio",
         "PIR's main site: meetings, history, service": "El sitio principal de PIR: reuniones, historia, servicio",
@@ -976,6 +981,8 @@
         "What it takes to keep them running": "O que é preciso para mantê-las funcionando",
         "Proposals": "Propostas",
         "Ideas before the Board and committees": "Ideias perante o Conselho e os comitês",
+        "Proposals, procedures & decks": "Propostas, procedimentos e apresentações",
+        "The reading room: what anyone may read, and the way in for members": "A sala de leitura: o que qualquer pessoa pode ler, e a entrada para os membros",
         "Resources": "Recursos",
         "By-laws, contacts, the service structure": "Estatuto, contatos, a estrutura de serviço",
         "PIR's main site: meetings, history, service": "O site principal do PIR: reuniões, história, serviço",
@@ -1211,6 +1218,8 @@
         "What it takes to keep them running": "Ce qu'il faut pour les faire vivre",
         "Proposals": "Propositions",
         "Ideas before the Board and committees": "Des idées soumises au Conseil et aux comités",
+        "Proposals, procedures & decks": "Propositions, procédures et présentations",
+        "The reading room: what anyone may read, and the way in for members": "La salle de lecture : ce que chacun peut lire, et l'entrée des membres",
         "Resources": "Ressources",
         "By-laws, contacts, the service structure": "Statuts, contacts, la structure de service",
         "PIR's main site: meetings, history, service": "Le site principal de PIR : réunions, histoire, service",
@@ -1446,6 +1455,8 @@
         "What it takes to keep them running": "Was es braucht, damit sie weiterlaufen",
         "Proposals": "Vorschläge",
         "Ideas before the Board and committees": "Ideen für den Vorstand und die Komitees",
+        "Proposals, procedures & decks": "Vorschläge, Verfahren und Präsentationen",
+        "The reading room: what anyone may read, and the way in for members": "Der Lesesaal: was alle lesen dürfen, und der Zugang für Mitglieder",
         "Resources": "Ressourcen",
         "By-laws, contacts, the service structure": "Satzung, Kontakte, die Dienststruktur",
         "PIR's main site: meetings, history, service": "PIRs Hauptseite: Meetings, Geschichte, Dienst",
